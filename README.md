@@ -1,3 +1,3 @@
 # DBMS
 Campus Event Management System
-no shit
+<p>best project ever</p>
