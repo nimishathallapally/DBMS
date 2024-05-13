@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app1'
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,7 @@ ROOT_URLCONF = 'CEMS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'E:\CEMS\CEMS\app1\templates'],
+        'DIRS': [r'app1\templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,7 +81,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT':'3306',
         'USER':'root',
-        'PASSWORD':'@Nimisha1'
+        'PASSWORD':'@vaneegc39'
     }
 }
 
