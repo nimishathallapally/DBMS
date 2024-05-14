@@ -68,6 +68,12 @@ TEMPLATES = [
     },
 ]
 
+STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
+
 WSGI_APPLICATION = 'CEMS.wsgi.application'
 
 
@@ -81,7 +87,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT':'3306',
         'USER':'root',
-        'PASSWORD':'@vaneegc39'
+        'PASSWORD':'mypassword'
     }
 }
 
