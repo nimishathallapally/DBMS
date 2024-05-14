@@ -20,10 +20,10 @@
 
 <div class="container-fluid">
     <div class="row m-5">
-        <div class="col-6 offset-3 p-4 transbox rounded">   
+        <div class="col-4 offset-4 p-4 mt-4 transbox rounded">   
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
-                <div class="mb-3 text-center" style="color:#2C4B87">
+                <div class="mb-3 mt-2 text-center" style="color:#2C4B87">
                     <h3>Welcome to IIITDM!</h3>
                 </div>
                 <!-- Email-id -->
@@ -59,7 +59,7 @@
                 
                 <input type="hidden" name="next" value="{{ next }}">
                 <tr>
-                    <p style="font: size 15px;"><a href="{% url 'password_reset' %}">Lost password?</a></p>
+                    <p style="font: size 15px;"><a href="{% url 'password_reset' %}" style="color:#2C4B87">Lost password?</a></p>
                 </tr>
             </form>
         </div>

@@ -7,10 +7,12 @@
     font-family: Nunito;
 }
 
-body{
+main{
     background-image: url(./pics/iiitdm_background_login.jpeg);
-    background-repeat: no-repeat;
-    background-size: 100% 600%;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
+    height:90vh;
 }
 
 
