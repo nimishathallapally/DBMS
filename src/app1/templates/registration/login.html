@@ -18,34 +18,52 @@
 {# Assumes you set up the password_reset view in your URLconf #}
 
 
-<div class="transbox p">
-    
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <table>
-        <tr>
-            <p>Welcome to IIITDM</p>
-        </tr>
-        <tr>
-            <td>{{ form.username.label_tag }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.username }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.password.label_tag }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.password }}</td>
-        </tr>
-        </table>
-        
-        <input type="submit" value="login">
-        <input type="hidden" name="next" value="{{ next }}">
-        <tr>
-            <p style="font: size 15px;"><a href="{% url 'password_reset' %}">Lost password?</a></p>
-        </tr>
-        </form>
+<div class="container-fluid">
+    <div class="row m-5">
+        <div class="col-6 offset-3 p-4 transbox rounded">   
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="mb-3 text-center" style="color:#2C4B87">
+                    <h3>Welcome to IIITDM!</h3>
+                </div>
+                <!-- Email-id -->
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label" style="color:#2C4B87">Email address</label>
+                    <input type="email" class="form-control rounded-pill" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+                <!-- Password -->
+                <div class="mb-3">
+                    <label for="password" class="form-label" style="color:#2C4B87">Password</label>
+                    <input type="password" id="inputPassword5" class="form-control rounded-pill">
+                </div>
+                <div class="col-auto mb-3 text-center">
+                    <button type="submit" class="btn btn-primary w-50 mt-3 rounded-pill" value="login" style="background-color:#2C4B87; border:#ffffff 2px solid">Login</button>
+                </div>
+                <!-- <table>
+                <tr>
+                    <p>Welcome to IIITDM</p>
+                </tr>
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password.label_tag }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password }}</td>
+                </tr>
+                </table> -->
+                
+                <input type="hidden" name="next" value="{{ next }}">
+                <tr>
+                    <p style="font: size 15px;"><a href="{% url 'password_reset' %}">Lost password?</a></p>
+                </tr>
+            </form>
+        </div>
+    </div>
     
 </div>
 

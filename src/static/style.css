@@ -14,24 +14,7 @@ body{
 }
 
 
-div.transbox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 20%;
-    left: 27%;
-    margin: 30px;
-    height: 700px;
-    width: 700px;
+.transbox {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 25px;
-    opacity: 0.8;
-    backdrop-filter: blur(50px);
-}
-
-div.transbox p {
-    margin: 5%;
-    font-weight: bold;
-    color: #1523e9;
+    backdrop-filter: blur(25px);
 }
