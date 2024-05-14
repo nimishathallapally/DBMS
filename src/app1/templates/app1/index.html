@@ -1,11 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>"Welcome to IIITDM!"</title>
-</head>
-<body>
-    <h1>This is index.html</h1>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Events of IIITDM!{% endblock title %}
+{% load static %}
+{% block content %}
+<header class="p-3" style ="background-color:#2C4B87">
+    <div class="container">
+        <img src="{% static './pics/logo.png' %}" alt="iiitdm logo" width="100px" height="auto">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="nav-link px-2" style ="color:#FFFFFF;font-weight:bold">IIITDM KANCHEEPURAM</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+        </form>
+
+        <div class="text-end">
+          <button type="button" a href="templates/registration/login.html" class="btn btn-outline-light me-2">Login</a></button>
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock content %}
