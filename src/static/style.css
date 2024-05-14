@@ -9,32 +9,6 @@
 
 main{
     background-image: url(./pics/iiitdm_background_login.jpeg);
-<<<<<<< HEAD
-    background-repeat: no-repeat;
-    background-size: 100% 1150%;
-}
-
-
-div.transbox {
-    display: flex;
- 
-    justify-content: center;
-    position: absolute;
-    top: 15%;
-    left: 30%;
-    height: 700px;
-    width: 700px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 25px;
-    opacity: 0.8;
-    backdrop-filter: blur(50px);
-}
-
-div.transbox p {
-    font-weight: bold;
-    color: #1523e9;
-}
-=======
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; 
@@ -46,4 +20,3 @@ div.transbox p {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     backdrop-filter: blur(25px);
 }
->>>>>>> 2ee10003e8a53df8178a3fd82d433c043190970f
