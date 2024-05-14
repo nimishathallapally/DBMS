@@ -24,26 +24,32 @@
         {% csrf_token %}
         <table>
         <tr>
-            <p>Welcome to IIITDM</p>
+            <br>
+            <br>
+            <p style="font-size: 50px;">Welcome to IIITDM !</p>
         </tr>
         <tr>
-            <td>{{ form.username.label_tag }}</td>
+            <p style="font-size: 30px;">Email ID </p>
         </tr>
         <tr>
-            <td>{{ form.username }}</td>
+            {{ form.username }}
         </tr>
-        <tr>
-            <td>{{ form.password.label_tag }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.password }}</td>
-        </tr>
-        </table>
         
+        <tr>
+            <br>
+            <p style="font-size: 30px;">Password</p>
+        </tr>
+        <tr>
+            {{ form.password }}
+        </tr>
+        
+        </table>
+        <br>
         <input type="submit" value="login">
         <input type="hidden" name="next" value="{{ next }}">
+        <br>
         <tr>
-            <p style="font: size 15px;"><a href="{% url 'password_reset' %}">Lost password?</a></p>
+            <p style="font-size: 25px;"><a href="{% url 'password_reset' %}">Lost password?</a></p>
         </tr>
         </form>
     
