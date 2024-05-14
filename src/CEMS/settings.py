@@ -81,7 +81,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT':'3306',
         'USER':'root',
-        'PASSWORD':'PASSWORD'
+        'PASSWORD':'@vaneegc39'
     }
 }
 
@@ -119,6 +119,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+
+LOGIN_REDIRECT_URL = "/"
 
 STATIC_URL = 'static/'
 
