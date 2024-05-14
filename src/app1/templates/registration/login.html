@@ -62,15 +62,13 @@
                 <div class="mb-3 mt-2 text-center" style="color:#2C4B87">
                     <h3>Welcome to IIITDM!</h3>
                 </div>
-                <!-- Email-id -->
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label" style="color:#2C4B87">Email address</label>
-                    <input type="email" class="form-control rounded-pill" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="text" name="username" class="form-control rounded-pill" id="exampleFormControlInput1" placeholder="name@example.com">
                 </div>
-                <!-- Password -->
                 <div class="mb-3">
                     <label for="password" class="form-label" style="color:#2C4B87">Password</label>
-                    <input type="password" id="inputPassword5" class="form-control rounded-pill">
+                    <input type="password" name="password" id="inputPassword5" class="form-control rounded-pill">
                 </div>
                 <div class="col-auto mb-3 text-center">
                     <button type="submit" class="btn btn-primary w-50 mt-3 rounded-pill" value="login" style="background-color:#2C4B87; border:#ffffff 2px solid">Login</button>
@@ -91,7 +89,9 @@
                 <tr>
                     <td>{{ form.password }}</td>
                 </tr>
-                </table> -->
+                </table>
+
+                <button type="submit" class="btn btn-primary w-50 mt-3 rounded-pill" value="login" style="background-color:#2C4B87; border:#ffffff 2px solid">Login</button> -->
                 
                 <input type="hidden" name="next" value="{{ next }}">
                 <tr>
