@@ -18,45 +18,106 @@
 .event_1
 {
 /*    Academic affairs*/
-    background-color:#C0EB1590;
+    background-color:#C0EB1530;
+    border-left:#C0EB15 5px solid;
+}
+.open_1
+{
+    background-color:#C0EB1510;
 }
 .event_2
 {
 /*    Alumni affairs*/
-    background-color:#E9931190;
+    background-color:#E9931130;
+    border-left:#E99311 5px solid;
+}
+.open_2
+{
+    background-color:#E9931110;
 }
 .event_3
 {
 /*    Cultural affairs*/
-    background-color:#11E9C290;
+    background-color:#11E9C230;
+    border-left:#11E9C2 5px solid;
+}
+.open_3
+{
+    background-color:#11E9C210;
 }
 .event_4
 {
 /*    General affairs*/
-    background-color:#8C8C8C90;
+    background-color:#8C8C8C30;
+    border-left:#8C8C8C 5px solid;
+}
+.open_4
+{
+    background-color:#8C8C8C10;
 }
 .event_5
 {
 /*    Hostel affairs*/
-    background-color:#FDE40090;
+    background-color:#FDE40030;
+    border-left:#FDE400 5px solid;
+}
+.open_5
+{
+    background-color:#FDE40010;
 }
 .event_6
 {
 /*    Placement cell*/
-    background-color:#E911BA90;
+    background-color:#E911BA30;
+    border-left:#E911BA 5px solid;
+}
+.open_6
+{
+    background-color:#E911BA10;
 }
 .event_7
 {
 /*    Sports Affairs*/
-    background-color:#9711E990;
+    background-color:#9711E930;
+    border-left:#9711E9 5px solid;
+}
+.open_7
+{
+    background-color:#9711E910;
 }
 .event_8
 {
 /*    Technical affairs*/
-    background-color:#E9111190;
+    background-color:#E9111130;
+    border-left:#E91111 5px solid;
+}
+.open_8
+{
+    background-color:#E9111110;
 }
 .event_9
 {
 /*    Mess affairs*/
-    background-color:#1175E990;
+    background-color:#1175E930;
+    border-left:#1175E9 5px solid;
+}
+.open_9
+{
+    background-color:#1175E910;
+}
+
+.accordian {
+    --bs-accordion-border-color: #00000000; 
+    --bs-accordion-border-width: 0;
+}
+
+
+.accordion-button:not(.collapsed),.accordian,.accordion-button
+{
+    background-color:#00000000 !important;
+    --bs-accordion-btn-focus-box-shadow: none; 
+}
+.accordion-button:hover
+{
+    background-color:#A2A2A230 !important;
 }

@@ -4,22 +4,36 @@
 {% load static %}
 {% block content %}
 <div class="container-fluid m-4 p-4">
-    <div class="row">
-        <div class="">
+    <div class="row ">
+        <div class="mb-3">
             <button type="button" style="color:#2C4B87; background-color:#ffffff; font-weight:bold ; border:#2C4B87 2px solid" class="btn btn-primary rounded-0">What's happening today?</button>
         </div>
+        <div class="mb-3">
+            <button type="button" style="color:#2C4B87; background-color:#ffffff; font-weight:bold ; border:#2C4B87 2px solid" class="btn btn-primary rounded-0">Filter</button>
+        </div>
     </div>
-    <div class="row col-6 m-3">
-        <!-- <table class="table-primary">Table</table> -->
-        <!-- <table class="table table-hover"> -->
-            {% for x in events %}
-            <div class="row event_{{ x.dept_id }}">
-                <div class="col table-primary">{{ x.name }}</div>
-                <div class="col table-primary">{{ x.event_start_date_time }}</div>
-                <div class="col table-primary">{{ x.dept_id }}</div>
+    <div class="eventlist row col-6 accordion" id="accordionExample">
+        {% for x in events %}
+        <div class="accordion-item p-0 m-2" style="border: none;">
+            <h2 class="accordion-header event_{{ x.dept_id }}">
+                <button class="accordion-button collapsed col table-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne_{{ x.id }}" aria-expanded="false" aria-controls="collapseOne_{{ x.id }}" >
+                    <div class="row" style="flex-grow:1">
+                        <div class="col table-primary fw-bold">{{ x.name }}</div>
+                        <div class="col table-primary">{{ x.event_start_date_time|time }}</div>
+                        <div class="col table-primary">{{ x.venue.name }}</div>
+                        <div class="col table-primary">{{ x.club.name }}</div>
+                    </div>
+                </button>
+            </h2>
+            <div id="collapseOne_{{ x.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body open_{{ x.dept_id }}">
+                    <p>{{ x.description }}</p>
+                    <p class="text-end">{{ x.event_start_date_time|time }}-{{ x.event_end_date_time|time }}</p>
+                    <p class="text-end fw-bold">{{ x.dept.name }}</p>
+                </div>
             </div>
-            {% endfor %}
-        <!-- </table> -->
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock content %}
