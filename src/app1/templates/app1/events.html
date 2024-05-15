@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container-fluid mt-3 ms-4 p-4">
     <div class="row ">
-        <div class="col-5 mb-4">
+        <div class="col-5 mb-3">
             <button type="button" style="color:#2C4B87; background-color:#ffffff; font-weight:bold ; border:#2C4B87 2px solid" class="btn btn-primary rounded-0">What's happening today?</button>
         </div>
         <div class="col dropdown">
@@ -20,36 +20,55 @@
              </ul>
         </div>
     </div>
-    {% if events|length == 0 %}
-    <p>No events</p>
-    {% else %}
-    <div class="eventlist row col-6 accordion" id="accordionExample">
-        {% for x in events %}
-        <div class="accordion-item p-0 m-2" style="border: none;">
-            <h2 class="accordion-header event_{{ x.dept_id }}">
-                <button class="accordion-button collapsed col table-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne_{{ x.id }}" aria-expanded="false" aria-controls="collapseOne_{{ x.id }}" >
-                    <div class="row" style="flex-grow:1">
-                        <div class="col table-primary fw-bold">{{ x.name }}</div>
-                        <div class="col table-primary">{{ x.event_start_date_time|time }}</div>
-                        <div class="col table-primary">{{ x.venue.name }}</div>
-                        <div class="col table-primary">{{ x.club.name }}</div>
+
+    <div class="row ">
+        {% if events|length == 0 %}
+        <div class="col-6">
+            <p>No events</p>
+        </div>
+        {% else %}
+        <div class="eventlist col-6 accordion" id="accordionExample">
+            {% for x in events %}
+            <div class="accordion-item p-0 mt-3" style="border: none;">
+                <h2 class="accordion-header event_{{ x.dept_id }}">
+                    <button class="accordion-button collapsed col table-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne_{{ x.id }}" aria-expanded="false" aria-controls="collapseOne_{{ x.id }}" >
+                        <div class="row" style="flex-grow:1">
+                            <div class="col table-primary fw-bold">{{ x.name }}</div>
+                            <div class="col table-primary">{{ x.event_start_date_time|time }}</div>
+                            <div class="col table-primary">{{ x.venue.name }}</div>
+                            <div class="col table-primary">{{ x.club.name }}</div>
+                        </div>
+                    </button>
+                </h2>
+                <div id="collapseOne_{{ x.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body open_{{ x.dept_id }}">
+                        {% if x.description %}
+                        <p>{{ x.description }}</p>
+                        <p class="text-end">{{ x.event_start_date_time|time }} - {{ x.event_end_date_time|time }}</p>
+                        <p class="text-end fw-bold">{{ x.dept.name }}</p>
+                        {% endif %}
+                        <p>{{ x.event_start_date_time|time }} - {{ x.event_end_date_time|time }}</p>
+                        <p class="fw-bold">{{ x.dept.name }}</p>
                     </div>
-                </button>
-            </h2>
-            <div id="collapseOne_{{ x.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body open_{{ x.dept_id }}">
-                    {% if x.description %}
-                    <p>{{ x.description }}</p>
-                    <p class="text-end">{{ x.event_start_date_time|time }} - {{ x.event_end_date_time|time }}</p>
-                    <p class="text-end fw-bold">{{ x.dept.name }}</p>
-                    {% endif %}
-                    <p>{{ x.event_start_date_time|time }} - {{ x.event_end_date_time|time }}</p>
-                    <p class="fw-bold">{{ x.dept.name }}</p>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+
+
+        {% endif %}
+        <div class="offset-2 col-4">
+            <div class="fw-bold">
+                <p>Upcoming events:</p>
+            </div>
+            {% for key, value in agenda.items %}
+                <p>{{key|date}}</p>
+                {% for v in value %}
+                    <p>{{v}}</p>
+                {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-    {% endif %}
+    
 </div>
 {% endblock content %}

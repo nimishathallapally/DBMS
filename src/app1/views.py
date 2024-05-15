@@ -4,6 +4,7 @@ from .forms import NewEvent
 from django.template import loader
 from .models import Event, Department
 from django.utils import timezone
+from dateutil.relativedelta import relativedelta
 import logging
 
 
@@ -30,6 +31,17 @@ def events(request, selector='all'):
     logging.warn(f'Events:{events}')
     context = {
         'events':events,
-        'depts':Department.objects.all()
+        'depts':Department.objects.all(),
+        'agenda':get_agenda()
     }
     return HttpResponse(template.render(context, request))
+
+def get_agenda():
+    agenda={}
+    for i in range(1,8):
+        curr_date = timezone.now()+relativedelta(days=i)
+        agenda[curr_date] = Event.objects.filter(event_start_date_time__date=curr_date)
+    logging.warn(f'Agenda:{agenda}')
+    return agenda
+
+
