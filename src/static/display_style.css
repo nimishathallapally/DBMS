@@ -14,3 +14,49 @@
     font-family: Nunito;
     margin-right: 960px;
 }
+
+.event_1
+{
+/*    Academic affairs*/
+    background-color:#C0EB1590;
+}
+.event_2
+{
+/*    Alumni affairs*/
+    background-color:#E9931190;
+}
+.event_3
+{
+/*    Cultural affairs*/
+    background-color:#11E9C290;
+}
+.event_4
+{
+/*    General affairs*/
+    background-color:#8C8C8C90;
+}
+.event_5
+{
+/*    Hostel affairs*/
+    background-color:#FDE40090;
+}
+.event_6
+{
+/*    Placement cell*/
+    background-color:#E911BA90;
+}
+.event_7
+{
+/*    Sports Affairs*/
+    background-color:#9711E990;
+}
+.event_8
+{
+/*    Technical affairs*/
+    background-color:#E9111190;
+}
+.event_9
+{
+/*    Mess affairs*/
+    background-color:#1175E990;
+}
