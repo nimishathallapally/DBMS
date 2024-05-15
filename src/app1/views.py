@@ -20,7 +20,7 @@ def add_event(request):
 
 def events(request):
     events = Event.objects.filter(event_start_date_time__date=timezone.now()).values()
-    template = loader.get_template('app1/index.html')
+    template = loader.get_template('app1/events.html')
     logging.warn(f'Events:{events}')
     context = {
         'events':events,
