@@ -27,7 +27,7 @@ class Event(models.Model):
     club = models.ForeignKey(Club, models.DO_NOTHING, blank=True, null=True)  # Field name made lowercase.
     venue = models.ForeignKey('Venue', models.DO_NOTHING, blank=True, null=True)  # Field name made lowercase.
     dept = models.ForeignKey(Department, models.DO_NOTHING, blank=True, null=True)  # Field name made lowercase.
-    user = models.ForeignKey(User, models.DO_NOTHING)  # Field name made lowercase.
+    user = models.ForeignKey(User, models.DO_NOTHING,null=True)  # Field name made lowercase.
 
 
 
