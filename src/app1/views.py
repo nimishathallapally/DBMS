@@ -7,5 +7,11 @@ def hi(request):
     return render(request, 'app1/index.html', {})
 
 def event(request):  
-    event = NewEvent()  
+    if request.method == "POST":
+        #import pdb; pdb.set_trace()
+        event = NewEvent(request.POST)
+        if event.is_valid():
+            event.save()
+            return HttpResponse("Success")  
+    event=NewEvent()
     return render(request,"app1/add_events.html",{'form':event}) 
