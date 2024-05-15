@@ -8,7 +8,7 @@ def hi(request):
 
 def event(request):  
     if request.method == "POST":
-        import pdb; pdb.set_trace()
+        #import pdb; pdb.set_trace()
         event = NewEvent(request.POST)
         if event.is_valid():
             event.save()
