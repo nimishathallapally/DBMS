@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import NewEvent 
 from django.template import loader
-from .models import Event
+from .models import Event, Department
 from django.utils import timezone
 import logging
 
@@ -30,5 +30,6 @@ def events(request, selector='all'):
     logging.warn(f'Events:{events}')
     context = {
         'events':events,
+        'depts':Department.objects.all()
     }
     return HttpResponse(template.render(context, request))

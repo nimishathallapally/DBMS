@@ -121,3 +121,16 @@
 {
     background-color:#A2A2A230 !important;
 }
+
+.btn.btn-cems
+{
+    background-color:#2C4B87;
+    color:#ffffff;
+    border:#2C4B87 2px solid;
+}
+.btn.btn-cems:hover
+{
+    background-color:#ffffff;
+    color:#2C4B87;
+    border:#2C4B87 2px solid;
+}
