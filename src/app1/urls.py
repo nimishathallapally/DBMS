@@ -1,7 +1,8 @@
 from django.urls import path,include
 from . import views
 urlpatterns = [
-    path('', views.hi,name='Home-Page'),
+    path('', views.events,name='Home-Page'),
     path("accounts/", include("django.contrib.auth.urls")),
-    path('event/add/', views.event),
+    path('events/add/', views.add_event),
+    path('events/', views.events),
 ]
