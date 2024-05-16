@@ -1,0 +1,13 @@
+.bg{
+    background-image: url(./pics/iiitdm_background_login.jpeg);
+    background-size: cover;
+}
+.transbox {
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    backdrop-filter: blur(25px);
+}
+
+.form-rounded {
+    border-radius: 3rem;
+    }
