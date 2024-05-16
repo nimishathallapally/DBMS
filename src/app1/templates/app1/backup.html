@@ -65,8 +65,8 @@
                                     
                                 </div>
                                 <div class="mb-3"> 
-                                    <label for="id_event_start_date_time">Event start time:</label>
-                                    <div class='input-group date' id='id_event_start_date_time'>
+                                    <label for="id_event_start_date_time_lb">Event start time:</label>
+                                    <div class='input-group date' id='id_event_start_date_time_box'>
                                         <input type='text' name="event_start_date_time" class="form-control" required id="id_event_start_date_time"/>
                                         <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
@@ -75,8 +75,8 @@
                                 </div>
                                
                                 <div class="mb-3"> 
-                                    <label for="id_event_end_date_time">Event end time:</label>
-                                    <div class='input-group date' id='id_event_end_date_time'>
+                                    <label for="id_event_end_date_time_lb">Event end time:</label>
+                                    <div class='input-group date' id='id_event_end_date_time_box'>
                                         <input type='text' name="event_end_date_time" class="form-control" required id="id_event_end_date_time"/>
                                         <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
@@ -99,40 +99,28 @@
         $(function() {
             $('#id_event_end_date_time').datetimepicker();
         });
-        // $('#id_venue').click(), function () {
-            
-        //     $("select#id_venue").append( $("<option>")
-        //     .val("value")
-        //     .html("text to be displayed")
-        // )};
-        // function addOption() {
-
-        //     optionText = "ajgd";
-        //     optionValue = "sfgdg";
-        //     $('#id_venue').append(new Option(optionText, optionValue));
-        // }
+    
         $( document ).ready(function() {
     
         console.log("starting");    
-        $("#id_venue").click(function() {
+        $("#id_venue").focus(function() {
             console.log("im here");
-        // If the select list is empty:
-            
-                // Documentation on getJSON: http://api.jquery.com/jQuery.getJSON/
-                $.getJSON("/event/listvenue/?start_time=2024-02-01&end_time=2024-05-15", null, function (data) {
+            $("#id_venue").empty()
+
+                var start_time = $("#id_event_start_date_time").val();
+                var end_time = $("#id_event_end_date_time").val();
+                console.log("before")
+                console.log(start_time)
+                console.log(end_time)
+                console.log("after")
+                $.getJSON(`/event/listvenue/?start_time=${start_time}&end_time=${end_time}`, null, function (data) {
                     console.log(data);
+                    
                     $.each(data, function(i, item){
                         console.log(item);
+                        
                         $("#id_venue").append("<option value="+item.name+">"+item.value+"</option>");
                     });
-                    // $.each(data, function(i, item){
-                    //     // Create and append the new options into the select list
-                    //     console.log(item.name);
-                    //     console.log(item.value);
-                    //     $("#id_venue").append("<option value="+item.name+">"+item.value+"</option>");
-                    // for (var i = 0; i < data.length; i++) {
-                    // console.log(data[i]["value"],data[i]["name"]);
-                    //     }
                     });
                 });
             

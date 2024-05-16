@@ -8,6 +8,8 @@ from .models import Event, Department
 from django.utils import timezone
 from dateutil.relativedelta import relativedelta
 import logging
+from dateutil.parser import parse
+
 
 
 def add_event(request):  
@@ -23,9 +25,12 @@ def add_event(request):
 def list_venue(request):
     venue = [{"name": "default_venue", "value": "myvenue"}]
     if request.GET.get("start_time") and request.GET.get("end_time"):
-        
+        #import pdb; pdb.set_trace()
         st = request.GET.get("start_time") 
+        st=parse(st)
         et = request.GET.get("end_time")
+        et=parse(et)
+        print(st, et)
         available = Venue.objects.exclude(event__event_start_date_time__lte=et,event__event_end_date_time__gte=st)
         for item in available:
             venue.append({"name": str(item), "value": str(item)})
