@@ -91,7 +91,7 @@ def list_venue(request):
 def list_club(request):
     club=[]
     user=request.user
-    available=Club.objects.filter(head_email=user) | Club.objects.filter(dept__head_email=user)  
+    available=Club.objects.filter(head=user) | Club.objects.filter(dept__head=user)  
     for item in available:
         club.append({"name":str(item.pk),"value":str(f"{item.name}")})
     return JsonResponse(club,safe=False)
