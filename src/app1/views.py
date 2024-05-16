@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from .forms import NewEvent 
-from .models import Event, Venue
+from .models import Event, Venue ,Club, Department
 import json
 from django.template import loader
 from .models import Event, Department, Favorites
@@ -14,13 +14,15 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.contrib.auth import logout
 from django.contrib.auth.models import Group 
+import datetime
 
 def logout_view(request):
     logout(request)
     return redirect('Home-Page')  
 
 @login_required
-def add_event(request):  
+def add_event(request):
+    #import pdb;pdb.set_trace()  
     # Fetch usernames associated with the authorised group
     if not request.user.groups.filter(name='authorised').exists():
         return HttpResponse("You are not authorized to add events.")
@@ -31,6 +33,10 @@ def add_event(request):
 
         ne['event_start_date_time']=parse(ne['event_start_date_time'])
         ne['event_end_date_time']=parse(ne['event_end_date_time'])
+        ne['event_creation_date_time']=datetime.datetime.now()
+        ne['user']=request.user
+        ne['dept']=Department.objects.filter(head=request.user) | Department.objects.filter(club__head=request.user)
+        ne['dept']=ne['dept'].values()[0]["id"]
         event = NewEvent(ne)
         #print(event)
         if event.is_valid():
@@ -80,7 +86,15 @@ def list_venue(request):
         #print(available)
         for item in available:
             venue.append({"name": str(item.pk) , "value":str(f"{item.building_name}:{item.location}")})
-    return JsonResponse(venue, safe=False)    
+    return JsonResponse(venue, safe=False) 
+
+def list_club(request):
+    club=[]
+    user=request.user
+    available=Club.objects.filter(head=user) | Club.objects.filter(dept__head=user)  
+    for item in available:
+        club.append({"name":str(item.pk),"value":str(f"{item.name}")})
+    return JsonResponse(club,safe=False)
 
 
 def events(request, datestr=None, selector='all'):

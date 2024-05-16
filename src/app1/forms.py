@@ -6,16 +6,16 @@ from .models import Event
 
 class NewEvent(forms.ModelForm):
 
+
+
     class Meta:
         model = Event
-        fields = ['name','description','venue','event_start_date_time','event_end_date_time']
-        labels = {'name': ('Event Name'),'description': ("Event Desciption"),'venue': ('Event Venue'),\
-                  'event_start_date_time': ("Event start time"),  \
-                    'event_end_date_time': ("Event end time")}
+        fields = ['name','description','venue','event_start_date_time','event_end_date_time','event_creation_date_time','user','club','dept']
         widgets = {
             'name':forms.TextInput(attrs={'class':'form-control','placeholder':'name of event'}),
             'description':forms.Textarea(attrs={'class':'form-control'}),
             'venue':forms.Select(attrs={'class':'form-control'}),
+            'club':forms.Select(attrs={'class':'form-control'}),
             'event_start_date_time':forms.DateTimeInput(attrs={'class':'form-control'},),
             'event_end_date_time':forms.DateTimeInput(attrs={'class':'form-control'}),
         }

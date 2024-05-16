@@ -2,18 +2,6 @@
 {% block title %}Login{% endblock title %}
 
 {% block content %}
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
-
-{% if next %}
-    {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-    {% else %}
-    <p>Please login to see this page.</p>
-    {% endif %}
-{% endif %}
 
 {# Assumes you set up the password_reset view in your URLconf #}
 
@@ -34,28 +22,14 @@
                     <label for="password" class="form-label" style="color:#2C4B87">Password</label>
                     <input type="password" name="password" id="inputPassword5" class="form-control rounded-pill">
                 </div>
+                {% if form.errors %}
+                <div class="alert alert-danger mx-2" role="alert">
+                  Your username and password didn't match. Please try again.
+                </div>
+                {% endif %}
                 <div class="col-auto mb-3 text-center">
                     <button type="submit" class="btn btn-primary w-50 mt-3 rounded-pill" value="login" style="background-color:#2C4B87; border:#ffffff 2px solid">Login</button>
                 </div>
-                <!-- <table>
-                <tr>
-                    <p>Welcome to IIITDM</p>
-                </tr>
-                <tr>
-                    <td>{{ form.username.label_tag }}</td>
-                </tr>
-                <tr>
-                    <td>{{ form.username }}</td>
-                </tr>
-                <tr>
-                    <td>{{ form.password.label_tag }}</td>
-                </tr>
-                <tr>
-                    <td>{{ form.password }}</td>
-                </tr>
-                </table>
-
-                <button type="submit" class="btn btn-primary w-50 mt-3 rounded-pill" value="login" style="background-color:#2C4B87; border:#ffffff 2px solid">Login</button> -->
                 
                 <input type="hidden" name="next" value="{{ next }}">
                 <tr>

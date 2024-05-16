@@ -10,6 +10,7 @@ urlpatterns = [
     re_path('events/unfav/(?P<eventid>[0-9]+)/$',views.unfav_event),
     re_path('events/delete/(?P<eventid>[0-9]+)/$',views.delete_event),
     path('events/listvenue/', views.list_venue, name='listvenue'),
+    path('events/listclub/', views.list_club, name='listclub'),
     re_path('events/(?P<datestr>[0-9a-zA-Z]+)/(?P<selector>[0-9a-zA-Z]+)/$', views.events),
     re_path('events/(?P<datestr>[0-9a-zA-Z]+)/$', views.events),
     path('events/', views.events),
