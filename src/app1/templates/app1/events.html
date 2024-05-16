@@ -31,6 +31,13 @@
                 {% endwith %}
              </ul>
         </div>
+        {% if request.user.is_authenticated and can_add_event%}
+            <div class="col-2">
+                <a href="{% url 'add_event' %}" class="btn btn-success">
+                    Add Events
+                </a>
+            </div>
+        {% endif %}
     </div>
 
     <div class="row ">

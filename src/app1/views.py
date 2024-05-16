@@ -10,9 +10,20 @@ from dateutil.relativedelta import relativedelta
 import logging
 from dateutil.parser import parse
 
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.contrib.auth import logout
+from django.contrib.auth.models import Group 
 
+def logout_view(request):
+    logout(request)
+    return redirect('Home-Page')  
 
+@login_required
 def add_event(request):  
+    # Fetch usernames associated with the authorised group
+    if request.user.groups.filter(name='authorised').exists():
+        return HttpResponse("You are not authorized to add events.")
     if request.method == "POST":
         #print("Postingggggg")
         #import pdb; pdb.set_trace()
@@ -78,12 +89,17 @@ def events(request, datestr=None, selector='all'):
 
     template = loader.get_template('app1/events.html')
     logging.warn(f'Events:{events_qs}')
+    can_add_event = request.user.groups.filter(name='authorised').exists()
+
+    # Group.objects.get(name='unauthorised').user_set.values_list('username', flat=True)
+    
     context = {
         'events':events_qs,
         'depts':Department.objects.all(),
         'agenda':get_agenda(),
         'is_today':is_today,
-        'show_date': req_datetime
+        'show_date': req_datetime,
+        'can_add_event': can_add_event
     }
     return HttpResponse(template.render(context, request))
 

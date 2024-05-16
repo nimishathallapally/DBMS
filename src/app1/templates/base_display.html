@@ -26,7 +26,12 @@
             </ul>
     
             <div class="text-end">
-              <a type="button" href="/accounts/login/" class="btn btn-outline-light me-2">Login</a>
+                {% if request.user.is_authenticated %}
+                <span class="fw-bold me-3" style="color:#ffffff;">{{request.user.username}}</span>
+                <a type="button" href="/accounts/login/" class="btn btn-sm btn-outline-light me-2">Logout</a>
+                {% else %}
+                <a type="button" href="/accounts/login/" class="btn btn-outline-light me-2">Login</a>
+                {% endif %}
             </div>
           </div>
         </div>
