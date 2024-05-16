@@ -3,6 +3,17 @@
 
 {% load static %}
 {% block content %}
+<script>
+    function delete_event(id)
+    {
+        if(confirm("Are you sure you want to delete this event?")==true)
+        {
+            console.log("User said yes for "+id);
+            window.location.href='/events/delete/'+id+'/';
+        }
+    }
+</script>
+
 <div class="container-fluid mt-3 ms-4 p-4">
     <div class="row ">
         {% if is_today%}
@@ -32,11 +43,11 @@
              </ul>
         </div>
         {% if request.user.is_authenticated and can_add_event%}
-            <div class="col-2">
-                <a href="{% url 'add_event' %}" class="btn btn-success">
-                    Add Events
-                </a>
-            </div>
+        <div class="col text-end me-5">
+            <a class="btn btn-cems" href="{% url 'add_event' %}">
+                Add Events
+            </a>
+        </div>
         {% endif %}
     </div>
 
@@ -68,6 +79,11 @@
                         {% endif %}
                         <p>{{ x.event_start_date_time|time }} - {{ x.event_end_date_time|time }}</p>
                         <p class="fw-bold">{{ x.dept.name }}</p>
+                        {% if x.user == request.user %}
+                            <a class="btn btn-danger btn-sm" onclick="delete_event({{x.id}})">
+                                Delete event
+                            </a> 
+                        {% endif %}
                     </div>
                 </div>
             </div>
