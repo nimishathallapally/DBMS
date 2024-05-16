@@ -32,7 +32,7 @@ class Event(models.Model):
 
 
 class Favorites(models.Model):
-    event = models.ForeignKey(Event, models.DO_NOTHING, blank=True, null=True)  # Field name made lowercase.
+    event = models.ForeignKey(Event, models.DO_NOTHING, related_name='fav', blank=True, null=True)  # Field name made lowercase.
     user = models.ForeignKey(User, models.DO_NOTHING, blank=True, null=True)  # Field name made lowercase.
 
 
@@ -41,5 +41,5 @@ class Venue(models.Model):
     building_name = models.CharField(max_length=225, blank=True, null=True)  # Field name made lowercase.
     location = models.CharField(max_length=225, blank=True, null=True)  # Field name made lowercase.
 
-    def __str__(self):
-        return f"{self.building_name}:{self.location}"
+    #def __str__(self):
+    #    return f"{self.building_name}:{self.location}"

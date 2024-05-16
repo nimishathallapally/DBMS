@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Event</title>
     
-    
+    <link rel="stylesheet" href="{% static 'adding_event_page.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" \
     rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" \
     crossorigin="anonymous">
@@ -24,7 +24,7 @@
 
 
 </head>
-<body style="background-color:rgb(159, 211, 224);">
+<body class="bg">
 
   <header class="p-3" style ="background-color:#2C4B87">
         <div class="container" style="display:flex; justify-content: space-between; align-items:center;">
@@ -39,7 +39,7 @@
     <main class="d-flex">
         <div class="container-fluid" >
             <div class="row m-5">
-                <div class="shadow-lg w-50 mx-auto mb-5 bg-light rounded opacity-100" style="padding-bottom: 3%;">  
+                <div class=" w-50 mx-auto mb-5 transbox form-rounded " style="padding-bottom: 3%;">  
                     <h1 style="text-align: center;padding-top: 5%;color: #2C4B87;">Create Event</h1>
                     
                     <div class="form-group">
@@ -47,13 +47,33 @@
                                 {% csrf_token %}  
                                 <div class="mb-3">
                                     <label for="id_name" class="form-label" style="color:#2C4B87">Event Name:</label>
-                                    <input type="text" name="name" class="form-control" maxlength="225" required id="id_name">
+                                    <input type="text" name="name" class="form-control rounded-pill " maxlength="225" required id="id_name">
                     
                                 </div>
                                 <div class="mb-3">
 
                                     <label for="id_description" class="form-label" style="color:#2C4B87">Event Description:</label>
-                                    <textarea name='description' cols="40" rows='10' class="form-control" id="id_description"></textarea>
+                                    <textarea name='description' cols="40" rows='10' class="form-control form-rounded" id="id_description"></textarea>
+                                </div>
+
+                                <div class="mb-3"> 
+                                    <label for="id_event_start_date_time_lb" style="color:#2C4B87">Event start time:</label>
+                                    <div class='input-group date' id='id_event_start_date_time_box'>
+                                        <input type='text' name="event_start_date_time" class="form-control" required id="id_event_start_date_time"/>
+                                        <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                               
+                                <div class="mb-3"> 
+                                    <label for="id_event_end_date_time_lb" style="color:#2C4B87">Event end time:</label>
+                                    <div class='input-group date' id='id_event_end_date_time_box'>
+                                        <input type='text' name="event_end_date_time" class="form-control" required id="id_event_end_date_time"/>
+                                        <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="id_venuelb" class="form-label" style="color:#2C4B87">Event Venue:</label>
@@ -64,30 +84,12 @@
                                     </select>
                                     
                                 </div>
-                                <div class="mb-3"> 
-                                    <label for="id_event_start_date_time">Event start time:</label>
-                                    <div class='input-group date' id='id_event_start_date_time'>
-                                        <input type='text' name="event_start_date_time" class="form-control" required id="id_event_start_date_time"/>
-                                        <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
-                                </div>
-                               
-                                <div class="mb-3"> 
-                                    <label for="id_event_end_date_time">Event end time:</label>
-                                    <div class='input-group date' id='id_event_end_date_time'>
-                                        <input type='text' name="event_end_date_time" class="form-control" required id="id_event_end_date_time"/>
-                                        <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
-                                </div>
                                 
+                                <button type="submit" class="save btn btn-danger">Save</button> 
                         </form>
                     </div>
 
-                    <button type="submit" class="save btn btn-danger">Save</button> 
+                    
                 </div>
             </div>
         </div>
@@ -99,40 +101,28 @@
         $(function() {
             $('#id_event_end_date_time').datetimepicker();
         });
-        // $('#id_venue').click(), function () {
-            
-        //     $("select#id_venue").append( $("<option>")
-        //     .val("value")
-        //     .html("text to be displayed")
-        // )};
-        // function addOption() {
-
-        //     optionText = "ajgd";
-        //     optionValue = "sfgdg";
-        //     $('#id_venue').append(new Option(optionText, optionValue));
-        // }
+    
         $( document ).ready(function() {
     
         console.log("starting");    
-        $("#id_venue").click(function() {
+        $("#id_venue").focus(function() {
             console.log("im here");
-        // If the select list is empty:
-            
-                // Documentation on getJSON: http://api.jquery.com/jQuery.getJSON/
-                $.getJSON("/event/listvenue/?start_time=2024-02-01&end_time=2024-05-15", null, function (data) {
+            $("#id_venue").empty()
+
+                var start_time = $("#id_event_start_date_time").val();
+                var end_time = $("#id_event_end_date_time").val();
+                console.log("before")
+                console.log(start_time)
+                console.log(end_time)
+                console.log("after")
+                $.getJSON(`/events/listvenue/?start_time=${start_time}&end_time=${end_time}`, null, function (data) {
                     console.log(data);
+                    
                     $.each(data, function(i, item){
                         console.log(item);
+                        
                         $("#id_venue").append("<option value="+item.name+">"+item.value+"</option>");
                     });
-                    // $.each(data, function(i, item){
-                    //     // Create and append the new options into the select list
-                    //     console.log(item.name);
-                    //     console.log(item.value);
-                    //     $("#id_venue").append("<option value="+item.name+">"+item.value+"</option>");
-                    // for (var i = 0; i < data.length; i++) {
-                    // console.log(data[i]["value"],data[i]["name"]);
-                    //     }
                     });
                 });
             
