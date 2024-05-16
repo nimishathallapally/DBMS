@@ -54,26 +54,29 @@
             </div>
             {% endfor %}
         </div>
-
-
         {% endif %}
 
         <div class="offset-1 col-5">
-            <div class="fw-bold">
-                <p>Upcoming events:</p>
+            <div class="fw-bold mb-4">
+                <button type="button" style="color:#2C4B87; background-color:#ffffff;font-weight:bold ; border:#2C4B87 2px solid" class="btn btn-primary rounded-0">Upcoming events</button>
             </div>
-            <div class="row me-4">
+            <div class="row me-5">
             {% for key, value in agenda.items %}
                 <div class="col-3 text-center">
-                    <h2 class="display-5"><span class="badge" style="color:#2C4B87">{{key|date:"j"}}</span></h2>
+                    <h1 class="display-6"><span class="badge" style="color:#2C4B87">{{key|date:"j"}}</span></h1>
                     <h5>{{key|date:"M"}}</h5>
                 </div>
+                
                 <div class="col-9">
                     {% for v in value %}
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{v}}</li>
+                    {% if value|length == 0 %}
+                            <p>No events</p>
+                    {% else %}
+                    <ul class="list-inline mt-1 event_{{ v.dept_id }}" style="margin-bottom: 10px;">
+                        <li class="list-inline-item ms-3 p-1"><i class="fa fa-calendar-o" aria-hidden="true"></i>{{v.name}}</li>
                     </ul>
-                    {% endfor %}
+                    {% endif %} 
+                    {% endfor %}               
                 </div>
             {% endfor %}
             </div>
