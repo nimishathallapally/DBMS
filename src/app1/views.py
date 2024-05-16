@@ -35,7 +35,7 @@ def add_event(request):
         ne['event_end_date_time']=parse(ne['event_end_date_time'])
         ne['event_creation_date_time']=datetime.datetime.now()
         ne['user']=request.user
-        ne['dept']=Department.objects.filter(head_email=request.user) | Department.objects.filter(club__head_email=request.user)
+        ne['dept']=Department.objects.filter(head=request.user) | Department.objects.filter(club__head=request.user)
         ne['dept']=ne['dept'].values()[0]["id"]
         event = NewEvent(ne)
         #print(event)
