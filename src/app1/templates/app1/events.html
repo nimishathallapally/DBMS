@@ -65,6 +65,10 @@
             <ul class="dropdown-menu">
                 {% with req_date=show_date|date:"Ymd" %}
                 <li class="select_filter"><a class="dropdown-item" href="/events/{{req_date}}/all/">All</a></li>
+
+                {% if request.user.is_authenticated %}
+                <li class="select_filter"><a class="dropdown-item" href="/events/{{req_date}}/fav/">Favorites</a></li>
+                {% endif %}
                 
                 {% for d in depts %}
                     <li class="select_filter"><a class="dropdown-item" href="/events/{{req_date}}/{{d.id}}/">{{d.name}}</a></li>
@@ -159,7 +163,7 @@
                     </div>
                 </div>
                 
-                <div class="col-9 mb-3">
+                <div class="col-9 mb-3 {% if value|length == 0 %}border-bottom{% endif %}">
                     {% if value|length == 0 %}
                     <ul class="list-inline mt-1 mb-2" >
                         <li class="list-inline-item ms-3 mt-3"><i class="fa fa-calendar-o" aria-hidden="true"></i>No events</li>

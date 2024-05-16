@@ -87,7 +87,7 @@ def events(request, datestr=None, selector='all'):
 
     is_today = True
     req_datetime = None
-    my_fav_event_ids = []
+    my_fav_event_ids = None
 
     if not datestr:
         req_datetime = timezone.now()
@@ -105,13 +105,18 @@ def events(request, datestr=None, selector='all'):
         pass
         # events = Event.objects.filter(event_start_date_time__date=req_datetime).order_by('event_start_date_time')
 
+    elif selector == 'fav':
+        my_fav_event_ids = list(Favorites.objects.filter(user=request.user, event__in=events_qs.all()).values_list("event_id", flat=True))
+        events_qs = Event.objects.filter(id__in=my_fav_event_ids)
+
     else:
         logging.warn(f'Selecting dept_id:{selector}')
         events_qs = events_qs.filter(dept_id=selector)
 
     if request.user.is_authenticated:
-        my_fav_event_ids = list(Favorites.objects.filter(user=request.user, event__in=events_qs.all()).values_list("event_id", flat=True))
-        logging.warn(f'My fave events:{my_fav_event_ids}')
+        if my_fav_event_ids is None:
+            my_fav_event_ids = list(Favorites.objects.filter(user=request.user, event__in=events_qs.all()).values_list("event_id", flat=True))
+            logging.warn(f'My fave events:{my_fav_event_ids}')
 
     events_qs = events_qs.order_by('event_start_date_time')
 
@@ -129,6 +134,7 @@ def events(request, datestr=None, selector='all'):
         'show_date': req_datetime,
         'can_add_event': can_add_event,
         'my_fav_event_ids' : my_fav_event_ids,
+        'selector': selector,
     }
     return HttpResponse(template.render(context, request))
 
