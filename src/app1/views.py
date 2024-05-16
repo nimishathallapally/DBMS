@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from .forms import NewEvent 
 from .models import Event, Venue
 import json
@@ -30,6 +30,12 @@ def add_event(request):
             return HttpResponse("Success")  
     event=NewEvent()
     return render(request,"app1/backup.html",{'form':event}) 
+
+
+def delete_event(request, eventid):
+    rm_event = Event.objects.filter(user=request.user, id=eventid).delete()
+    return HttpResponseRedirect('/events/')
+
 
 def list_venue(request):
     venue = [{"name": "default_venue", "value": "myvenue"}]

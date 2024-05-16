@@ -68,6 +68,11 @@
                         {% endif %}
                         <p>{{ x.event_start_date_time|time }} - {{ x.event_end_date_time|time }}</p>
                         <p class="fw-bold">{{ x.dept.name }}</p>
+                        {% if x.user == request.user %}
+                            <a class="btn btn-danger btn-sm" href="/events/delete/{{x.id}}/">
+                                Delete event
+                            </a> 
+                        {% endif %}
                     </div>
                 </div>
             </div>
