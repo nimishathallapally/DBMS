@@ -48,12 +48,12 @@
 .event_4
 {
 /*    General affairs*/
-    background-color:#8C8C8C30;
-    border-left:#8C8C8C 6px solid;
+    background-color:#7D3B3230;
+    border-left:#7D3B32 6px solid;
 }
 .open_4
 {
-    background-color:#8C8C8C10;
+    background-color:#7D3B3210;
 }
 .event_5
 {
@@ -104,6 +104,15 @@
 .open_9
 {
     background-color:#1175E910;
+}
+.event_None
+{
+    background-color:#8C8C8C30;
+    border-left:#8C8C8C 6px solid;
+}
+.open_None
+{
+    background-color:#8C8C8C10;
 }
 
 .accordian {
