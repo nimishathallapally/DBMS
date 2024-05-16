@@ -126,11 +126,20 @@
 {
     background-color:#2C4B87;
     color:#ffffff;
+    font-weight:bold; 
     border:#2C4B87 2px solid;
 }
 .btn.btn-cems:hover
 {
     background-color:#ffffff;
     color:#2C4B87;
+    font-weight:bold; 
     border:#2C4B87 2px solid;
 }
+
+.upcom_event:hover
+{
+    background-color:#A2A2A230 !important;
+    cursor: pointer;
+}
+
