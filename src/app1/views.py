@@ -48,20 +48,42 @@ def list_venue(request):
     return JsonResponse(venue, safe=False)    
 
 
-def events(request, selector='all'):
+def events(request, datestr=None, selector='all'):
+
+    is_today = True
+    req_datetime = None
+
+    if not datestr:
+        req_datetime = timezone.now()
+    else:
+        is_today = False
+        req_datetime = timezone.datetime.strptime(datestr, '%Y%m%d')
+        if req_datetime.strftime('%Y%m%d') == timezone.datetime.now().strftime('%Y%m%d'):
+            is_today = True
+    
+    logging.warn(f'Requesting events for Date:{req_datetime}')
+
+    events_qs = Event.objects.filter(event_start_date_time__date=req_datetime)
+
 
     if selector == 'all':
-        events = Event.objects.filter(event_start_date_time__date=timezone.now()).order_by('event_start_date_time')
-    
+        pass
+        # events = Event.objects.filter(event_start_date_time__date=req_datetime).order_by('event_start_date_time')
+
     else:
-        events = Event.objects.filter(dept_id=selector, event_start_date_time__date=timezone.now()).order_by('event_start_date_time')
+        logging.warn(f'Selecting dept_id:{selector}')
+        events_qs = events_qs.filter(dept_id=selector)
+
+    events_qs = events_qs.order_by('event_start_date_time')
 
     template = loader.get_template('app1/events.html')
-    logging.warn(f'Events:{events}')
+    logging.warn(f'Events:{events_qs}')
     context = {
-        'events':events,
+        'events':events_qs,
         'depts':Department.objects.all(),
-        'agenda':get_agenda()
+        'agenda':get_agenda(),
+        'is_today':is_today,
+        'show_date': req_datetime
     }
     return HttpResponse(template.render(context, request))
 

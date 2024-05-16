@@ -7,6 +7,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path('events/add/', views.add_event,name='addevent'),
     path('events/listvenue/', views.list_venue, name='listvenue'),
-    re_path('events/(?P<selector>[0-9a-zA-Z]+)/$', views.events),
+    re_path('events/(?P<datestr>[0-9a-zA-Z]+)/(?P<selector>[0-9a-zA-Z]+)/$', views.events),
+    re_path('events/(?P<datestr>[0-9a-zA-Z]+)/$', views.events),
     path('events/', views.events),
 ]

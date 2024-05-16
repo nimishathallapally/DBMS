@@ -5,18 +5,30 @@
 {% block content %}
 <div class="container-fluid mt-3 ms-4 p-4">
     <div class="row ">
+        {% if is_today%}
         <div class="col-5 mb-3">
             <button type="button" style="color:#2C4B87; background-color:#ffffff; font-weight:bold ; border:#2C4B87 2px solid" class="btn btn-primary rounded-0">What's happening today?</button>
         </div>
+        {% else %}
+        <div class="col-5 mb-3">
+            <button type="button" style="color:#2C4B87; background-color:#ffffff; font-weight:bold ; border:#2C4B87 2px solid" class="btn btn-primary rounded-0">{{show_date|date}}</button>
+            <a href="/events/">
+            <button type="button" style="" class="btn btn-primary btn-cems">Back to today</button>
+            </a>
+        </div>
+        {% endif %}
         <div class="col dropdown">
             <a class="btn btn-cems dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Filter
             </a>
             <ul class="dropdown-menu">
-                <li class="select_filter"><a class="dropdown-item" href="/events/">All</a></li>
+                {% with req_date=show_date|date:"Ymd" %}
+                <li class="select_filter"><a class="dropdown-item" href="/events/{{req_date}}/all/">All</a></li>
+                
                 {% for d in depts %}
-                    <li class="select_filter"><a class="dropdown-item" href="/events/{{d.id}}/">{{d.name}}</a></li>
+                    <li class="select_filter"><a class="dropdown-item" href="/events/{{req_date}}/{{d.id}}/">{{d.name}}</a></li>
                 {% endfor %}
+                {% endwith %}
              </ul>
         </div>
     </div>
@@ -58,28 +70,40 @@
 
         <div class="offset-1 col-5">
             <div class="fw-bold mb-4">
-                <button type="button" style="color:#2C4B87; background-color:#ffffff;font-weight:bold ; border:#2C4B87 2px solid" class="btn btn-primary rounded-0">Upcoming events</button>
+                <button type="button" style="color:#2C4B87; background-color:#ffffff;font-weight:bold ; border:#2C4B87 2px solid" class="btn btn-primary rounded-0">
+                    Upcoming events
+                </button>
             </div>
-            <div class="row me-5">
+            
             {% for key, value in agenda.items %}
-                <div class="col-3 text-center">
-                    <h1 class="display-6"><span class="badge" style="color:#2C4B87">{{key|date:"j"}}</span></h1>
-                    <h5>{{key|date:"M"}}</h5>
+            {% with req_date=key|date:"Ymd" %}
+            <div class="upcom_event row me-5">
+                <div class="col-3 mb-3 text-center" onclick="location.href='/events/{{req_date}}'">
+                    <div class="fs-3" style="color:#2C4B87">
+                        {{key|date:"j"}}
+                    </div>
+                    <div class="fs-5">
+                        {{key|date:"M"}}
+                    </div>
                 </div>
                 
-                <div class="col-9">
-                    {% for v in value %}
+                <div class="col-9 mb-3">
                     {% if value|length == 0 %}
-                            <p>No events</p>
-                    {% else %}
-                    <ul class="list-inline mt-1 event_{{ v.dept_id }}" style="margin-bottom: 10px;">
-                        <li class="list-inline-item ms-3 p-1"><i class="fa fa-calendar-o" aria-hidden="true"></i>{{v.name}}</li>
+                    <ul class="list-inline mt-1 mb-2" >
+                        <li class="list-inline-item ms-3 mt-3"><i class="fa fa-calendar-o" aria-hidden="true"></i>No events</li>
                     </ul>
-                    {% endif %} 
-                    {% endfor %}               
+                    {% else %}
+                    {% for v in value %}
+                    <ul class="list-inline mt-1 mb-2 event_{{ v.dept_id }}" >
+                        <li class="list-inline-item ms-3 "><i class="fa fa-calendar-o" aria-hidden="true"></i>{{v.name}}</li>
+                    </ul>
+                    {% endfor %}
+                    {% endif %}                
                 </div>
-            {% endfor %}
             </div>
+            {% endwith %}
+            {% endfor %}
+            
         </div>
     </div>
 </div>
