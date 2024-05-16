@@ -15,12 +15,8 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" \
     crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
 
 </head>
@@ -37,72 +33,68 @@
         </div>
       </header>
     <main class="d-flex">
-        <div class="container-fluid" >
-            <div class="row m-5">
-                <div class=" w-50 mx-auto mb-5 transbox form-rounded " style="padding-bottom: 3%;">  
-                    <h3 style="text-align: center;padding-top: 5%;color: #2C4B87;font-family: Nunito;">Create Event</h3>
-                    
-                    <div class="form-group">
-                        <form method="POST" class="post-form">  
-                                {% csrf_token %}  
-                                <div class="mb-3">
-                                    <label for="id_name" class="form-label" style="color:#2C4B87;font-family: Nunito;">Event Name:</label>
-                                    <input type="text" name="name" class="form-control rounded-pill " maxlength="225" required id="id_name">
-                    
-                                </div>
-                                <div class="mb-3">
+    <div class="container-fluid" >
+        <div class="row m-5">
+            <div class=" w-50 mx-auto mb-5 transbox rounded position-relative" style="padding-bottom: 3%;"> 
+            <button type="button" class="btn-close position-absolute top-0 end-0 m-2" onclick="location.href='/events/'" aria-label="Close"></button> 
+                <h3 style="text-align: center;padding-top: 5%;color: #2C4B87;font-family: Nunito;">Add Events!</h3>
+                
+            <div class="mx-3">
+                <div class="form-group">
+                    <form method="POST" class="post-form">  
+                            {% csrf_token %}  
+                            <div class="mb-3">
+                                <label for="id_name" class="form-label" style="color:#2C4B87;font-family: Nunito;">Event Name:</label>
+                                <input type="text" name="name" class="form-control rounded-pill " maxlength="225" required id="id_name">
+                
+                            </div>
 
-                                    <label for="id_description" class="form-label" style="color:#2C4B87;font-family: Nunito;">Event Description:</label>
-                                    <textarea name='description' cols="40" rows='10' class="form-control " id="id_description"></textarea>
+                            <div class="mb-3">
+                                <label for="id_description" class="form-label" style="color:#2C4B87;font-family: Nunito;">Event Description:</label>
+                                <textarea name='description' cols="auto" rows='3' class="form-control" id="id_description"></textarea>
+                            </div>
+                        <div class="row">
+                            <div class="col mb-3"> 
+                                <label for="id_event_start_date_time_lb" style="color:#2C4B87;font-family: Nunito;">Event start time:</label>
+                                <div class="input-group date" id='id_event_start_date_time_box'>
+                                    <input type='datetime-local' name="event_start_date_time" class="form-control rounded-pill" required id="id_event_start_date_time"/>
                                 </div>
+                            </div>
+                           
+                            <div class="col mb-3"> 
+                                <label for="id_event_end_date_time_lb" style="color:#2C4B87;font-family: Nunito;">Event end time:</label>
+                                <div class='input-group date' id='id_event_end_date_time_box'>
+                                    <input type='datetime-local' name="event_end_date_time" class="form-control rounded-pill" required id="id_event_end_date_time"/>
+                                </div>
+                            </div>
+                        </div>
 
-                                <div class="mb-3"> 
-                                    <label for="id_event_start_date_time_lb" style="color:#2C4B87;font-family: Nunito;">Event start time:</label>
-                                    <div class='input-group date' id='id_event_start_date_time_box'>
-                                        <input type='text' name="event_start_date_time" class="form-control" required id="id_event_start_date_time"/>
-                                        <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
+                            <div class="mb-3">
+                                <label for="id_venuelb" class="form-label" style="color:#2C4B87;font-family: Nunito;">Event Venue:</label>
+                                <div>
+                                    <select name="venue"  id="id_venue"class="form-select rounded-pill" aria-label=".form-select-lg example">
+                                    </select>
                                 </div>
-                               
-                                <div class="mb-3"> 
-                                    <label for="id_event_end_date_time_lb" style="color:#2C4B87;font-family: Nunito;">Event end time:</label>
-                                    <div class='input-group date' id='id_event_end_date_time_box'>
-                                        <input type='text' name="event_end_date_time" class="form-control" required id="id_event_end_date_time"/>
-                                        <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="id_venuelb" class="form-label" style="color:#2C4B87;font-family: Nunito;">Event Venue:</label>
-                                    <div>
-                                        <select name="venue"  id="id_venue"class="form-select form-select-lg mb-3 rounded-pill" aria-label=".form-select-lg example">
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="id_clublb" class="form-label" style="color:#2C4B87;font-family: Nunito;">Club :</label>
-                                    <div class ='mb-3'>
-                                        <select name="club"  id="id_club" class="form-select form-select-lg mb-3 rounded-pill" aria-label=".form-select-lg example">
-                        
-                                        </select>
-                                    </div>
-                                    
-                                    
-                                </div>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button type="submit" class="save btn btn-primary me-md-2" style="font-family: Nunito;">Save</button>
-                                </div>
-                                 
-                        </form>
-                    </div>
-
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_clublb" class="form-label" style="color:#2C4B87;font-family: Nunito;">Club :</label>
+                                <div class ='mb-3'>
+                                    <select name="club"  id="id_club" class="form-select rounded-pill" aria-label=".form-select-lg example">
                     
+                                    </select>
+                                </div>
+                                
+                                
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="submit" class="save btn btn-primary me-md-2" style="background-color:#2C4B87; color:#ffffff;font-weight:bold; border:#ffffff 2px solid;font-family: Nunito;">Save</button>
+                            </div>
+                    </form>
                 </div>
             </div>
+            </div>
         </div>
+    </div>
     </main>
     <script type="text/javascript">
         $(function() {
