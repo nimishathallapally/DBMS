@@ -20,7 +20,14 @@
             .then(data => {
                 //console.log(data); 
                 // do something (like update the DOM with the data)
-                location.reload();
+                if(data.status=="success")
+                {
+                    location.reload();
+                }
+                else
+                {
+                    alert("Login to favourite events!");
+                }
             });        
     }
 
