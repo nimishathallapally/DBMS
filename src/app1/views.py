@@ -20,7 +20,7 @@ def logout_view(request):
 @login_required
 def add_event(request):  
     # Fetch usernames associated with the authorised group
-    if request.user.groups.filter(name='authorised').exists():
+    if not request.user.groups.filter(name='authorised').exists():
         return HttpResponse("You are not authorized to add events.")
     if request.method == "POST":
         #import pdb; pdb.set_trace()
