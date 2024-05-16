@@ -84,7 +84,13 @@
                                     </select>
                                     
                                 </div>
-                                
+                                <div class="mb-3">
+                                    <label for="id_clublb" class="form-label" style="color:#2C4B87">Club :</label>
+                                    <select name="club"  id="id_club">
+                        
+                                    </select>
+                                    
+                                </div>
                                 <button type="submit" class="save btn btn-danger">Save</button> 
                         </form>
                     </div>
@@ -104,17 +110,17 @@
     
         $( document ).ready(function() {
     
-        console.log("starting");    
+    
         $("#id_venue").focus(function() {
-            console.log("im here");
+
             $("#id_venue").empty()
 
                 var start_time = $("#id_event_start_date_time").val();
                 var end_time = $("#id_event_end_date_time").val();
-                console.log("before")
+
                 console.log(start_time)
                 console.log(end_time)
-                console.log("after")
+
                 $.getJSON(`/events/listvenue/?start_time=${start_time}&end_time=${end_time}`, null, function (data) {
                     console.log(data);
                     
@@ -127,8 +133,20 @@
                 });
             
         });
-        console.log( "ready!" );
 
+        $("#id_club").focus(function() {
+            console.log("im here");
+            $("#id_club").empty()
+                $.getJSON(`/events/listclub/`, null, function (data) {
+                    console.log(data);
+                    
+                    $.each(data, function(i, item){
+                        console.log(item);
+                        
+                        $("#id_club").append("<option value="+item.name+">"+item.value+"</option>");
+                    });
+                    });
+                });
         
     </script>
 </body>
