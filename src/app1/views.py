@@ -36,6 +36,7 @@ def add_event(request):
         ne['event_creation_date_time']=datetime.datetime.now()
         ne['user']=request.user
         ne['dept']=Department.objects.filter(head_email=request.user) | Department.objects.filter(club__head_email=request.user)
+        ne['dept']=ne['dept'].values()[0]["id"]
         event = NewEvent(ne)
         #print(event)
         if event.is_valid():
