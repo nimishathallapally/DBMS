@@ -20,44 +20,46 @@
              </ul>
         </div>
         {% if user.is_authenticated %}
-            <div class="col-2">
-                <a href="{% url 'add_event' %}" class="btn btn-success">Add Events</a>
-            </div>
+            {% if not user.username in unauthorised_usernames %}
+                <div class="col-2">
+                    <a href="{% url 'add_event' %}" class="btn btn-success">Add Events</a>
+                </div>
+            {% endif %}
             <div class="col-1">
                 <a href="{% url 'logout' %}" class="btn btn-danger">Log Out</a>
             </div>
         {% endif %}
     </div>
     {% if events|length == 0 %}
-    <p>No events</p>
+        <p>No events</p>
     {% else %}
-    <div class="eventlist row col-6 accordion" id="accordionExample">
-        {% for x in events %}
-        <div class="accordion-item p-0 m-2" style="border: none;">
-            <h2 class="accordion-header event_{{ x.dept_id }}">
-                <button class="accordion-button collapsed col table-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne_{{ x.id }}" aria-expanded="false" aria-controls="collapseOne_{{ x.id }}" >
-                    <div class="row" style="flex-grow:1">
-                        <div class="col table-primary fw-bold">{{ x.name }}</div>
-                        <div class="col table-primary">{{ x.event_start_date_time|time }}</div>
-                        <div class="col table-primary">{{ x.venue.name }}</div>
-                        <div class="col table-primary">{{ x.club.name }}</div>
+        <div class="eventlist row col-6 accordion" id="accordionExample">
+            {% for x in events %}
+            <div class="accordion-item p-0 m-2" style="border: none;">
+                <h2 class="accordion-header event_{{ x.dept_id }}">
+                    <button class="accordion-button collapsed col table-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne_{{ x.id }}" aria-expanded="false" aria-controls="collapseOne_{{ x.id }}" >
+                        <div class="row" style="flex-grow:1">
+                            <div class="col table-primary fw-bold">{{ x.name }}</div>
+                            <div class="col table-primary">{{ x.event_start_date_time|time }}</div>
+                            <div class="col table-primary">{{ x.venue.name }}</div>
+                            <div class="col table-primary">{{ x.club.name }}</div>
+                        </div>
+                    </button>
+                </h2>
+                <div id="collapseOne_{{ x.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body open_{{ x.dept_id }}">
+                        {% if x.description %}
+                        <p>{{ x.description }}</p>
+                        <p class="text-end">{{ x.event_start_date_time|time }} - {{ x.event_end_date_time|time }}</p>
+                        <p class="text-end fw-bold">{{ x.dept.name }}</p>
+                        {% endif %}
+                        <p>{{ x.event_start_date_time|time }} - {{ x.event_end_date_time|time }}</p>
+                        <p class="fw-bold">{{ x.dept.name }}</p>
                     </div>
-                </button>
-            </h2>
-            <div id="collapseOne_{{ x.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body open_{{ x.dept_id }}">
-                    {% if x.description %}
-                    <p>{{ x.description }}</p>
-                    <p class="text-end">{{ x.event_start_date_time|time }} - {{ x.event_end_date_time|time }}</p>
-                    <p class="text-end fw-bold">{{ x.dept.name }}</p>
-                    {% endif %}
-                    <p>{{ x.event_start_date_time|time }} - {{ x.event_end_date_time|time }}</p>
-                    <p class="fw-bold">{{ x.dept.name }}</p>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
     {% endif %}
 </div>
 {% endblock content %}
