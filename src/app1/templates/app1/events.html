@@ -1,0 +1,83 @@
+{% extends "base_display.html" %}
+{% block title %}Events of IIITDM!{% endblock title %}
+
+{% load static %}
+{% block content %}
+<div class="container-fluid mt-3 ms-4 p-4">
+    <div class="row ">
+        <div class="col-5 mb-3">
+            <button type="button" style="color:#2C4B87; background-color:#ffffff; font-weight:bold ; border:#2C4B87 2px solid" class="btn btn-primary rounded-0">What's happening today?</button>
+        </div>
+        <div class="col dropdown">
+            <a class="btn btn-cems dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Filter
+            </a>
+            <ul class="dropdown-menu">
+                <li class="select_filter"><a class="dropdown-item" href="/events/">All</a></li>
+                {% for d in depts %}
+                    <li class="select_filter"><a class="dropdown-item" href="/events/{{d.id}}/">{{d.name}}</a></li>
+                {% endfor %}
+             </ul>
+        </div>
+    </div>
+
+    <div class="row ">
+        {% if events|length == 0 %}
+        <div class="col-6">
+            <p>No events</p>
+        </div>
+        {% else %}
+        <div class="eventlist col-6 accordion" id="accordionExample">
+            {% for x in events %}
+            <div class="accordion-item p-0 mt-3" style="border: none;">
+                <h2 class="accordion-header event_{{ x.dept_id }}">
+                    <button class="accordion-button collapsed col table-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne_{{ x.id }}" aria-expanded="false" aria-controls="collapseOne_{{ x.id }}" >
+                        <div class="row" style="flex-grow:1">
+                            <div class="col table-primary fw-bold">{{ x.name }}</div>
+                            <div class="col table-primary">{{ x.event_start_date_time|time }}</div>
+                            <div class="col table-primary">{{ x.venue.name }}</div>
+                            <div class="col table-primary">{{ x.club.name }}</div>
+                        </div>
+                    </button>
+                </h2>
+                <div id="collapseOne_{{ x.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body open_{{ x.dept_id }}">
+                        {% if x.description %}
+                        <p>{{ x.description }}</p>
+                        <p class="text-end">{{ x.event_start_date_time|time }} - {{ x.event_end_date_time|time }}</p>
+                        <p class="text-end fw-bold">{{ x.dept.name }}</p>
+                        {% endif %}
+                        <p>{{ x.event_start_date_time|time }} - {{ x.event_end_date_time|time }}</p>
+                        <p class="fw-bold">{{ x.dept.name }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+        {% endif %}
+
+        <div class="offset-1 col-5">
+            <div class="fw-bold">
+                <p>Upcoming events:</p>
+            </div>
+            <div class="row me-4">
+            {% for key, value in agenda.items %}
+                <div class="col-3 text-center">
+                    <h2 class="display-5"><span class="badge" style="color:#2C4B87">{{key|date:"j"}}</span></h2>
+                    <h5>{{key|date:"M"}}</h5>
+                </div>
+                <div class="col-9">
+                    {% for v in value %}
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{v}}</li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
