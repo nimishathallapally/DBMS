@@ -121,14 +121,18 @@
                 // Documentation on getJSON: http://api.jquery.com/jQuery.getJSON/
                 $.getJSON("/event/listvenue/?start_time=2024-02-01&end_time=2024-05-15", null, function (data) {
                     console.log(data);
+                    $.each(data, function(i, item){
+                        console.log(item);
+                        $("#id_venue").append("<option value="+item.name+">"+item.value+"</option>");
+                    });
                     // $.each(data, function(i, item){
                     //     // Create and append the new options into the select list
                     //     console.log(item.name);
                     //     console.log(item.value);
                     //     $("#id_venue").append("<option value="+item.name+">"+item.value+"</option>");
-                    for (var i = 0; i < data.length; i++) {
-                    console.log(data[i]["value"],data[i]["name"]);
-                        }
+                    // for (var i = 0; i < data.length; i++) {
+                    // console.log(data[i]["value"],data[i]["name"]);
+                    //     }
                     });
                 });
             

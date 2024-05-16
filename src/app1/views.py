@@ -29,8 +29,8 @@ def list_venue(request):
         available = Venue.objects.exclude(event__event_start_date_time__lte=et,event__event_end_date_time__gte=st)
         for item in available:
             venue.append({"name": str(item), "value": str(item)})
-    return JsonResponse(json.dumps(venue), safe=False)
-    
+    # return JsonResponse(json.dumps(venue), safe=False)
+    return JsonResponse(venue, safe=False)    
 
 
 def events(request, selector='all'):
