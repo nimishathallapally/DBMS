@@ -10,4 +10,6 @@ urlpatterns = [
     re_path('events/(?P<datestr>[0-9a-zA-Z]+)/(?P<selector>[0-9a-zA-Z]+)/$', views.events),
     re_path('events/(?P<datestr>[0-9a-zA-Z]+)/$', views.events),
     path('events/', views.events),
+    path('events/add/', views.add_event, name='add_event'),
+    path('logout/', views.logout_view, name='logout'),
 ]

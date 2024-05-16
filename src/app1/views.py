@@ -8,9 +8,22 @@ from .models import Event, Department
 from django.utils import timezone
 from dateutil.relativedelta import relativedelta
 import logging
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.contrib.auth import logout
+from django.contrib.auth.models import Group 
 
+def logout_view(request):
+    logout(request)
+    return redirect('Home-Page')  
 
+@login_required
 def add_event(request):  
+    unauthorised_group = Group.objects.get(name='unauthorised')
+    # Fetch usernames associated with the unauthorised group
+    unauthorised_usernames = unauthorised_group.user_set.values_list('username', flat=True)
+    if request.user.groups.filter(name='unauthorised').exists():
+        return HttpResponse("You are not authorized to add events.")
     if request.method == "POST":
         #import pdb; pdb.set_trace()
         event = NewEvent(request.POST)
@@ -63,12 +76,15 @@ def events(request, datestr=None, selector='all'):
 
     template = loader.get_template('app1/events.html')
     logging.warn(f'Events:{events_qs}')
+    unauthorised_usernames = Group.objects.get(name='unauthorised').user_set.values_list('username', flat=True)
+    
     context = {
         'events':events_qs,
         'depts':Department.objects.all(),
         'agenda':get_agenda(),
         'is_today':is_today,
-        'show_date': req_datetime
+        'show_date': req_datetime,
+        'unauthorised_usernames': unauthorised_usernames
     }
     return HttpResponse(template.render(context, request))
 
