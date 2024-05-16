@@ -40,24 +40,24 @@
         <div class="container-fluid" >
             <div class="row m-5">
                 <div class=" w-50 mx-auto mb-5 transbox form-rounded " style="padding-bottom: 3%;">  
-                    <h1 style="text-align: center;padding-top: 5%;color: #2C4B87;">Create Event</h1>
+                    <h3 style="text-align: center;padding-top: 5%;color: #2C4B87;font-family: Nunito;">Create Event</h3>
                     
                     <div class="form-group">
                         <form method="POST" class="post-form">  
                                 {% csrf_token %}  
                                 <div class="mb-3">
-                                    <label for="id_name" class="form-label" style="color:#2C4B87">Event Name:</label>
+                                    <label for="id_name" class="form-label" style="color:#2C4B87;font-family: Nunito;">Event Name:</label>
                                     <input type="text" name="name" class="form-control rounded-pill " maxlength="225" required id="id_name">
                     
                                 </div>
                                 <div class="mb-3">
 
-                                    <label for="id_description" class="form-label" style="color:#2C4B87">Event Description:</label>
-                                    <textarea name='description' cols="40" rows='10' class="form-control form-rounded" id="id_description"></textarea>
+                                    <label for="id_description" class="form-label" style="color:#2C4B87;font-family: Nunito;">Event Description:</label>
+                                    <textarea name='description' cols="40" rows='10' class="form-control " id="id_description"></textarea>
                                 </div>
 
                                 <div class="mb-3"> 
-                                    <label for="id_event_start_date_time_lb" style="color:#2C4B87">Event start time:</label>
+                                    <label for="id_event_start_date_time_lb" style="color:#2C4B87;font-family: Nunito;">Event start time:</label>
                                     <div class='input-group date' id='id_event_start_date_time_box'>
                                         <input type='text' name="event_start_date_time" class="form-control" required id="id_event_start_date_time"/>
                                         <span class="input-group-addon">
@@ -67,7 +67,7 @@
                                 </div>
                                
                                 <div class="mb-3"> 
-                                    <label for="id_event_end_date_time_lb" style="color:#2C4B87">Event end time:</label>
+                                    <label for="id_event_end_date_time_lb" style="color:#2C4B87;font-family: Nunito;">Event end time:</label>
                                     <div class='input-group date' id='id_event_end_date_time_box'>
                                         <input type='text' name="event_end_date_time" class="form-control" required id="id_event_end_date_time"/>
                                         <span class="input-group-addon">
@@ -76,22 +76,26 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="id_venuelb" class="form-label" style="color:#2C4B87">Event Venue:</label>
-                                    <!-- <select name="venue"  id="id_venue" onclick="addOption()"></select> -->
-                                    <select name="venue"  id="id_venue">
-                                        <!-- <option value="select"> Select </option> -->
-                        
-                                    </select>
-                                    
+                                    <label for="id_venuelb" class="form-label" style="color:#2C4B87;font-family: Nunito;">Event Venue:</label>
+                                    <div>
+                                        <select name="venue"  id="id_venue"class="form-select form-select-lg mb-3 rounded-pill" aria-label=".form-select-lg example">
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="id_clublb" class="form-label" style="color:#2C4B87">Club :</label>
-                                    <select name="club"  id="id_club">
+                                    <label for="id_clublb" class="form-label" style="color:#2C4B87;font-family: Nunito;">Club :</label>
+                                    <div class ='mb-3'>
+                                        <select name="club"  id="id_club" class="form-select form-select-lg mb-3 rounded-pill" aria-label=".form-select-lg example">
                         
-                                    </select>
+                                        </select>
+                                    </div>
+                                    
                                     
                                 </div>
-                                <button type="submit" class="save btn btn-danger">Save</button> 
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="submit" class="save btn btn-primary me-md-2" style="font-family: Nunito;">Save</button>
+                                </div>
+                                 
                         </form>
                     </div>
 
