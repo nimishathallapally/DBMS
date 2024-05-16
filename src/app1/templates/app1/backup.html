@@ -83,11 +83,11 @@
                                         </span>
                                     </div>
                                 </div>
-                                
+                                <button type="submit" class="save btn btn-danger">Save</button> 
                         </form>
                     </div>
 
-                    <button type="submit" class="save btn btn-danger">Save</button> 
+                    
                 </div>
             </div>
         </div>
@@ -113,7 +113,7 @@
                 console.log(start_time)
                 console.log(end_time)
                 console.log("after")
-                $.getJSON(`/event/listvenue/?start_time=${start_time}&end_time=${end_time}`, null, function (data) {
+                $.getJSON(`/events/listvenue/?start_time=${start_time}&end_time=${end_time}`, null, function (data) {
                     console.log(data);
                     
                     $.each(data, function(i, item){

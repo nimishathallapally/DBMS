@@ -14,27 +14,37 @@ from dateutil.parser import parse
 
 def add_event(request):  
     if request.method == "POST":
+        #print("Postingggggg")
         #import pdb; pdb.set_trace()
-        event = NewEvent(request.POST)
+        ne=request.POST.dict()
+
+        ne['event_start_date_time']=parse(ne['event_start_date_time'])
+        ne['event_end_date_time']=parse(ne['event_end_date_time'])
+        event = NewEvent(ne)
+        #print(event)
         if event.is_valid():
+            #print("vaaliddddd")
             event.save()
-            return HttpResponse("Success")  
+            return HttpResponse("Success")
+        else:
+            print("not valid")  
     event=NewEvent()
     return render(request,"app1/backup.html",{'form':event}) 
 
+
 def list_venue(request):
-    venue = [{"name": "default_venue", "value": "myvenue"}]
+    venue = []
     if request.GET.get("start_time") and request.GET.get("end_time"):
         #import pdb; pdb.set_trace()
         st = request.GET.get("start_time") 
         st=parse(st)
         et = request.GET.get("end_time")
         et=parse(et)
-        print(st, et)
+        #print(st, et)
         available = Venue.objects.exclude(event__event_start_date_time__lte=et,event__event_end_date_time__gte=st)
+        #print(available)
         for item in available:
-            venue.append({"name": str(item), "value": str(item)})
-    # return JsonResponse(json.dumps(venue), safe=False)
+            venue.append({"name": str(item.pk) , "value":str(f"{item.building_name}:{item.location}")})
     return JsonResponse(venue, safe=False)    
 
 
