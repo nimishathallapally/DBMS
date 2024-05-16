@@ -1,25 +1,41 @@
-academic.affairs@iiitdm.ac.in			  iiitdmacads@123
-alumni.affairs@iiitdm.ac.in			    iiitdmalumni@123
-cultural.affairs@iiitdm.ac.in			  iiitdmculturals@123
-general.affairs@iiitdm.ac.in			  iiitdmgeneral@123
-hostel.affairs@iiitdm.ac.in			    iiitdmhostel@123			
-placement@iiitdm.ac.in				      iiitdmplace@123
-sports@iiitdm.ac.in				          123@spo@123
-technical.affairs@iiitdm.ac.in			iiitdmtech@123
-mess.affairs@iiitdm.ac.in			      iiitdmmess@123
-auv.society@iiitdm.ac.in			      iiitdmauv@123
-asme@iiitdm.ac.in				            iiitdm@me123				
-epic@iiitdm.ac.in				            iiitdmep@123
-gdsc@iiitdm.ac.in				            iiitdmgd@123
-ieeesb@iiitdm.ac.in				          iiitdmieee@123 
-ipd@iiitdm.ac.in				            iiitdmipd@123
-mars@iiitdm.ac.in				            iiitdmrs@123
-optica@iiitdm.ac.in				          iiitdmptic@123
-saeclub@iiitdm.ac.in				        iiitdmsae@123
-idc@iiitdm.ac.in				            iiitdmtad@123 
-csclub@iiitdm.ac.in				          iiitdmcs@123
-cs22b1020@iiitdm.ac.in				      @123desh@123
-cs22b1080@iiitdm.ac.in				      @123avanee@123
-cs22b1082@iiitdm.ac.in				      @123nimisha@123
-cs22b2034@iiitdm.ac.in				      @123jyolsna@123
-cs22b2039@iiitdm.ac.in				      @123megha@123
+1	Academic affairs			academic.affairs@iiitdm.ac.in			iiitdmacads@123
+2	Alumni Affairs				alumni.affairs@iiitdm.ac.in			iiitdmalumni@123
+3	ultural Affairs				cultural.affairs@iiitdm.ac.in			iiitdmculturals@123
+4	General Affairs				general.affairs@iiitdm.ac.in			iiitdmgeneral@123
+5	Hostel Affairs				hostel.affairs@iiitdm.ac.in			iiitdmhostel@123			
+6	Training and Placement Cell		placement@iiitdm.ac.in				iiitdmplace@123
+7	Sports					sports@iiitdm.ac.in				123@spo@123
+8	Technical Affairs			technical.affairs@iiitdm.ac.in			iiitdmtech@123
+9	Mess Affairs				mess.affairs@iiitdm.ac.in			iiitdmmess@123
+801	AUV					auv.society@iiitdm.ac.in			iiitdmauv@123
+802	CS CLUB					csclub@iiitdm.ac.in				iiitdmcs@123		
+803	EPIC					epic@iiitdm.ac.in				iiitdmep@123
+804	GDSC					gdsc@iiitdm.ac.in				iiitdmgd@123
+805	MARS					mars@iiitdm.ac.in				iiitdmrs@123
+806	OPTICA					optica@iiitdm.ac.in				iiitdmptic@123
+807	ROBOTICS				technical.affairs@iiitdm.ac.in			iiitdmtech@123
+808	SAE					saeclub@iiitdm.ac.in				iiitdmsae@123
+809	TAD					idc@iiitdm.ac.in				iiitdmtad@123 
+810	IPD					ipd@iiitdm.ac.in				iiitdmipd@123
+811	ASME STUDENT SECTION			asme@iiitdm.ac.in				iiitdm@me123	
+812	IEEE STUDENT BRANCH			technical.affairs@iiitdm.ac.in			iiitdmtech@123
+813	SYSTEM CODING CLUB			technical.affairs@iiitdm.ac.in			iiitdmtech@123
+301	AURORA					cultural.affairs@iiitdm.ac.in			iiitdmculturals@123
+302	CINEMATICS				cultural.affairs@iiitdm.ac.in			iiitdmculturals@123
+303	ESPORTS					cultural.affairs@iiitdm.ac.in			iiitdmculturals@123
+304	FOOTLIGHTS				cultural.affairs@iiitdm.ac.in			iiitdmculturals@123
+305	IMAGIX					cultural.affairs@iiitdm.ac.in			iiitdmculturals@123
+306	LITERATI SOCIETY			cultural.affairs@iiitdm.ac.in			iiitdmculturals@123
+307	MUSIC CLUB				cultural.affairs@iiitdm.ac.in			iiitdmculturals@123
+308	QURIOSITY				cultural.affairs@iiitdm.ac.in			iiitdmculturals@123
+309	TAMIZH SAALARAM				cultural.affairs@iiitdm.ac.in			iiitdmculturals@123
+310	HEATRIX					cultural.affairs@iiitdm.ac.in			iiitdmculturals@123
+311	SPICMACY				cultural.affairs@iiitdm.ac.in			iiitdmculturals@123
+312	INDICSENSE				cultural.affairs@iiitdm.ac.in			iiitdmculturals@123
+cs22b1020@iiitdm.ac.in										@123desh@123
+cs22b1080@iiitdm.ac.in										@123avanee@123
+cs22b1082@iiitdm.ac.in										@123nimisha@123
+cs22b2034@iiitdm.ac.in										@123jyolsna@123
+cs22b2039@iiitdm.ac.in										@123megha@123
+
+    
