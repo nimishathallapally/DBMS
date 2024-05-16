@@ -6,12 +6,12 @@ from django.db import models
 class Club(models.Model):
     name = models.CharField(unique=True, max_length=225)  # Field name made lowercase.
     dept = models.ForeignKey('Department', models.DO_NOTHING)  # Field name made lowercase.
-    head_email = models.ForeignKey(User, models.DO_NOTHING,null=True)  # Field name made lowercase.
+    head = models.ForeignKey(User, models.DO_NOTHING,null=True)  # Field name made lowercase.
 
 
 
 class Department(models.Model):
-    head_email = models.ForeignKey(User, models.DO_NOTHING,null=True)  # Field name made lowercase.
+    head = models.ForeignKey(User, models.DO_NOTHING,null=True)  # Field name made lowercase.
     name = models.CharField(max_length=225)  # Field name made lowercase.
 
 
