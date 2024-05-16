@@ -27,7 +27,7 @@ def add_event(request):
     if not request.user.groups.filter(name='authorised').exists():
         return HttpResponse("You are not authorized to add events.")
     if request.method == "POST":
-        print("Postingggggg")
+        #print("Postingggggg")
         #import pdb; pdb.set_trace()
         ne=request.POST.dict()
 
@@ -91,7 +91,7 @@ def list_venue(request):
 def list_club(request):
     club=[]
     user=request.user
-    available=Club.objects.filter(head_email=user) | Club.objects.filter(dept__head_email=user)  
+    available=Club.objects.filter(head=user) | Club.objects.filter(dept__head=user)  
     for item in available:
         club.append({"name":str(item.pk),"value":str(f"{item.name}")})
     return JsonResponse(club,safe=False)

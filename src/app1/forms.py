@@ -15,6 +15,7 @@ class NewEvent(forms.ModelForm):
             'name':forms.TextInput(attrs={'class':'form-control','placeholder':'name of event'}),
             'description':forms.Textarea(attrs={'class':'form-control'}),
             'venue':forms.Select(attrs={'class':'form-control'}),
+            'club':forms.Select(attrs={'class':'form-control'}),
             'event_start_date_time':forms.DateTimeInput(attrs={'class':'form-control'},),
             'event_end_date_time':forms.DateTimeInput(attrs={'class':'form-control'}),
         }
