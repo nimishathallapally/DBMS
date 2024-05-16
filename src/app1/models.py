@@ -32,7 +32,7 @@ class Event(models.Model):
 
 
 class Favorites(models.Model):
-    event = models.ForeignKey(Event, models.DO_NOTHING, blank=True, null=True)  # Field name made lowercase.
+    event = models.ForeignKey(Event, models.DO_NOTHING, related_name='fav', blank=True, null=True)  # Field name made lowercase.
     user = models.ForeignKey(User, models.DO_NOTHING, blank=True, null=True)  # Field name made lowercase.
 
 
