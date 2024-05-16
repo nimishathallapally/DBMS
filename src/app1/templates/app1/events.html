@@ -31,25 +31,14 @@
                 {% endwith %}
              </ul>
         </div>
-        {% if user.is_authenticated %}
-            {% if not user.username in unauthorised_usernames %}
-                <div class="col-2">
-                    <a href="{% url 'add_event' %}" class="btn btn-success">Add Events</a>
-                </div>
-            {% endif %}
-            <div class="col-1">
-                <a href="{% url 'logout' %}" class="btn btn-danger">Log Out</a>
+        {% if request.user.is_authenticated and can_add_event%}
+            <div class="col-2">
+                <a href="{% url 'add_event' %}" class="btn btn-success">
+                    Add Events
+                </a>
             </div>
         {% endif %}
     </div>
-<<<<<<< HEAD
-    {% if events|length == 0 %}
-        <p>No events</p>
-    {% else %}
-        <div class="eventlist row col-6 accordion" id="accordionExample">
-            {% for x in events %}
-            <div class="accordion-item p-0 m-2" style="border: none;">
-=======
 
     <div class="row ">
         {% if events|length == 0 %}
@@ -60,7 +49,6 @@
         <div class="eventlist col-6 accordion" id="accordionExample">
             {% for x in events %}
             <div class="accordion-item p-0 mt-3" style="border: none;">
->>>>>>> origin/avanee
                 <h2 class="accordion-header event_{{ x.dept_id }}">
                     <button class="accordion-button collapsed col table-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne_{{ x.id }}" aria-expanded="false" aria-controls="collapseOne_{{ x.id }}" >
                         <div class="row" style="flex-grow:1">
@@ -84,10 +72,6 @@
                 </div>
             </div>
             {% endfor %}
-<<<<<<< HEAD
-        </div>
-    {% endif %}
-=======
         </div>
         {% endif %}
 
@@ -129,6 +113,5 @@
             
         </div>
     </div>
->>>>>>> origin/avanee
 </div>
 {% endblock content %}

@@ -19,10 +19,8 @@ def logout_view(request):
 
 @login_required
 def add_event(request):  
-    unauthorised_group = Group.objects.get(name='unauthorised')
-    # Fetch usernames associated with the unauthorised group
-    unauthorised_usernames = unauthorised_group.user_set.values_list('username', flat=True)
-    if request.user.groups.filter(name='unauthorised').exists():
+    # Fetch usernames associated with the authorised group
+    if request.user.groups.filter(name='authorised').exists():
         return HttpResponse("You are not authorized to add events.")
     if request.method == "POST":
         #import pdb; pdb.set_trace()
@@ -76,7 +74,9 @@ def events(request, datestr=None, selector='all'):
 
     template = loader.get_template('app1/events.html')
     logging.warn(f'Events:{events_qs}')
-    unauthorised_usernames = Group.objects.get(name='unauthorised').user_set.values_list('username', flat=True)
+    can_add_event = request.user.groups.filter(name='authorised').exists()
+
+    # Group.objects.get(name='unauthorised').user_set.values_list('username', flat=True)
     
     context = {
         'events':events_qs,
@@ -84,7 +84,7 @@ def events(request, datestr=None, selector='all'):
         'agenda':get_agenda(),
         'is_today':is_today,
         'show_date': req_datetime,
-        'unauthorised_usernames': unauthorised_usernames
+        'can_add_event': can_add_event
     }
     return HttpResponse(template.render(context, request))
 
