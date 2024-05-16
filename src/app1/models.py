@@ -40,3 +40,6 @@ class Favorites(models.Model):
 class Venue(models.Model):
     building_name = models.CharField(max_length=225, blank=True, null=True)  # Field name made lowercase.
     location = models.CharField(max_length=225, blank=True, null=True)  # Field name made lowercase.
+
+    def __str__(self):
+        return f"{self.building_name}:{self.location}"
