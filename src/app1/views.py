@@ -5,8 +5,9 @@ from django.template import loader
 from .models import Event, Department
 from django.utils import timezone
 import logging
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def add_event(request):  
     if request.method == "POST":
         #import pdb; pdb.set_trace()

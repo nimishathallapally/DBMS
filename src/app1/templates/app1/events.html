@@ -19,6 +19,14 @@
                 {% endfor %}
              </ul>
         </div>
+        {% if user.is_authenticated %}
+            <div class="col-2">
+                <a href="{% url 'add_event' %}" class="btn btn-success">Add Events</a>
+            </div>
+            <div class="col-1">
+                <a href="{% url 'logout' %}" class="btn btn-danger">Log Out</a>
+            </div>
+        {% endif %}
     </div>
     {% if events|length == 0 %}
     <p>No events</p>

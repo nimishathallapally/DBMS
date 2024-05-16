@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'CEMS.urls'
@@ -87,7 +88,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT':'3306',
         'USER':'root',
-        'PASSWORD':'mypassword'
+        'PASSWORD':'@Nimisha1'
     }
 }
 
