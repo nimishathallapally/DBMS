@@ -11,8 +11,8 @@ main{
     background-image: url(./pics/iiitdm_background_login.jpeg);
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; 
-   
+    background-size: cover;
+    height:90vh;
 }
 
 
