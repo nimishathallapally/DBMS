@@ -57,18 +57,27 @@
 
 
         {% endif %}
-        <div class="offset-2 col-4">
+
+        <div class="offset-1 col-5">
             <div class="fw-bold">
                 <p>Upcoming events:</p>
             </div>
+            <div class="row me-4">
             {% for key, value in agenda.items %}
-                <p>{{key|date}}</p>
-                {% for v in value %}
-                    <p>{{v}}</p>
-                {% endfor %}
+                <div class="col-3 text-center">
+                    <h2 class="display-5"><span class="badge" style="color:#2C4B87">{{key|date:"j"}}</span></h2>
+                    <h5>{{key|date:"M"}}</h5>
+                </div>
+                <div class="col-9">
+                    {% for v in value %}
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{v}}</li>
+                    </ul>
+                    {% endfor %}
+                </div>
             {% endfor %}
+            </div>
         </div>
     </div>
-    
 </div>
 {% endblock content %}
