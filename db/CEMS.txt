@@ -1,74 +1,73 @@
-DATABASE : CEMS
 TABLE NAME: app1_club:
-id	name					dept_id		head_id
-301	Aurora					3			21
-302	Cinematics				3			21	
-303	Esports					3			21
-304	Footlights				3			21	
-305	Imagix					3			21
-306	Literati Society		3			21	
-307	Music					3			21
-308	Quriousity				3			21	
-309	Tamizh Saalaram			3			21
-310	Theatrix				3			21	
-311	Spicmacy				3			21
-312	IndiSense				3			21	
-801	AUV						8			28
-802	CS CLUB					8			29
-803	EPIC					8			30
-804	GDSC					8			31
-805	MARS					8			32
-806	OPTICA					8			33
-807	ROBOTICS				8			26
-808	SAE						8			34
-809	TAD						8			37
-810	IPD						8			35
-811	ASME STUDENT SECTION	8			36
-812	IEEE STUDENT BRANCH		8			38
-813	SYSTEM CODING CLUB		8			26
-814	Red Ribbon Society		3			21
+id	name			dept_id		head_id
+301	Aurora			3		21
+302	Cinematics		3		21	
+303	Esports			3		21
+304	Footlights		3		21	
+305	Imagix			3		21
+306	Literati Society	3		21	
+307	Music			3		21
+308	Quriousity		3		21	
+309	Tamizh Saalaram		3		21
+310	Theatrix		3		21	
+311	Spicmacy		3		21
+312	IndiSense		3		21	
+801	AUV			8		28
+802	CS CLUB			8		29
+803	EPIC			8		30
+804	GDSC			8		31
+805	MARS			8		32
+806	OPTICA			8		33
+807	ROBOTICS		8		26
+808	SAE			8		34
+809	TAD			8		37
+810	IPD			8		35
+811	ASME STUDENT SECTION	8		36
+812	IEEE STUDENT BRANCH	8		38
+813	SYSTEM CODING CLUB	8		26
+814	Red Ribbon Society	3		21
 
 TABLE NAME: app1_department
-id	name							head_id
-1	Academic affairs				19			
-2	Alumni Affairs					20
-3	ultural Affairs					21
-4	General Affairs					22
-5	Hostel Affairs					23		
+id	name					head_id
+1	Academic affairs			19			
+2	Alumni Affairs				20
+3	ultural Affairs				21
+4	General Affairs				22
+5	Hostel Affairs				23		
 6	Training and Placement Cell		24
-7	Sports							25
-8	Technical Affairs				26
-9	Mess Affairs					27
+7	Sports					25
+8	Technical Affairs			26
+9	Mess Affairs				27
 
 TABLE NAME: app1_venue
 Got it, here's the list with the format "1 Academic Block H05" for each item:
 
-id	building_name			location
-1 	Academic Block 			H05
-2 	Academic Block 			H01
-3 	Academic Block 			H02
-4 	Academic Block 			H03
-5 	Academic Block 			H04
-6 	Academic Block 			H11
-7 	Academic Block 			H12
-8 	Academic Block 			H13
-9 	Academic Block 			H14
-10 	Academic Block 			H15
-11 	Academic Block 			H21
-12 	Academic Block 			H22
-13 	Academic Block 			H23
-14 	Academic Block 			H24
-15 	Academic Block 			H25
-16 	Academic Block 			H31
-17 	Academic Block 			H32
-18 	Academic Block 			H33
-19 	Academic Block 			H34
-20 	Academic Block 			H35
-21 	Academic Block 			H41
-22 	Academic Block 			H42
-23 	Academic Block 			H43
-24 	Academic Block 			H44
-25 	Academic Block 			H45
+id	building_name		location
+1 	Academic Block 		H05
+2 	Academic Block 		H01
+3 	Academic Block 		H02
+4 	Academic Block 		H03
+5 	Academic Block 		H04
+6 	Academic Block 		H11
+7 	Academic Block 		H12
+8 	Academic Block 		H13
+9 	Academic Block 		H14
+10 	Academic Block 		H15
+11 	Academic Block 		H21
+12 	Academic Block 		H22
+13 	Academic Block 		H23
+14 	Academic Block 		H24
+15 	Academic Block 		H25
+16 	Academic Block 		H31
+17 	Academic Block 		H32
+18 	Academic Block 		H33
+19 	Academic Block 		H34
+20 	Academic Block 		H35
+21 	Academic Block 		H41
+22 	Academic Block 		H42
+23 	Academic Block 		H43
+24 	Academic Block 		H44
+25 	Academic Block 		H45
 26 	Arjuna Sports Complex 	Basketball Court
 27 	Arjuna Sports Complex 	Football Court
 28 	Arjuna Sports Complex 	Cricket Ground
@@ -77,35 +76,35 @@ id	building_name			location
 31 	Arjuna Sports Complex 	Tennis Court
 32 	Arjuna Sports Complex 	Gym
 33 	Admin                 	Placement Office
-34 	Admin 		      		Seminar Hall
+34 	Admin 		      	Seminar Hall
 35 	Academic Block        	Old Library
-36	Akshaya		   			Mess
+36	Akshaya		   	Mess
 
 TABLE NAME: auth_user
-id	username						is_superuser
+id	username			is_superuser
 5	admin				1
-14	cs22b1020@iiitdm.ac.in			0
-15	cs22b1080@iiitdm.ac.in			0
-16	cs22b1082@iiitdm.ac.in			0
-17	cs22b2034@iiitdm.ac.in			0
-18	cs22b2039@iiitdm.ac.in			0
+14	cs22b1020@iiitdm.ac.in		0
+15	cs22b1080@iiitdm.ac.in		0
+16	cs22b1082@iiitdm.ac.in		0
+17	cs22b2034@iiitdm.ac.in		0
+18	cs22b2039@iiitdm.ac.in		0
 19	academic.affairs@iiitdm.ac.in	0
-20	alumni.affairs@iiitdm.ac.in		0
+20	alumni.affairs@iiitdm.ac.in	0
 21	cultural.affairs@iiitdm.ac.in	0
 22	general.affairs@iiitdm.ac.in	0
-23	hostel.affairs@iiitdm.ac.in		0
-24	placement@iiitdm.ac.in			0
-25	sports@iiitdm.ac.in				0
+23	hostel.affairs@iiitdm.ac.in	0
+24	placement@iiitdm.ac.in		0
+25	sports@iiitdm.ac.in		0
 26	technical.affairs@iiitdm.ac.in	0
-27	mess.affairs@iiitdm.ac.in		0
-28	auv.society@iiitdm.ac.in		0
-29	csclub@iiitdm.ac.in				0
-30	epic@iiitdm.ac.in				0
-31	gdsc@iiitdm.ac.in				0
-32	mars@iiitdm.ac.in				0
-33	optica@iiitdm.ac.in				0
-34	saeclub@iiitdm.ac.in			0
-35	ipd@iiitdm.ac.in				0
-36	asme@iiitdm.ac.in				0
-37	idc@iiitdm.ac.in				0
-38	ieeesb@iiitdm.ac.in				0
+27	mess.affairs@iiitdm.ac.in	0
+28	auv.society@iiitdm.ac.in	0
+29	csclub@iiitdm.ac.in		0
+30	epic@iiitdm.ac.in		0
+31	gdsc@iiitdm.ac.in		0
+32	mars@iiitdm.ac.in		0
+33	optica@iiitdm.ac.in		0
+34	saeclub@iiitdm.ac.in		0
+35	ipd@iiitdm.ac.in		0
+36	asme@iiitdm.ac.in		0
+37	idc@iiitdm.ac.in		0
+38	ieeesb@iiitdm.ac.in		0
