@@ -40,8 +40,6 @@ id	name					head_id
 9	Mess Affairs				27
 
 TABLE NAME: app1_venue
-Got it, here's the list with the format "1 Academic Block H05" for each item:
-
 id	building_name		location
 1 	Academic Block 		H05
 2 	Academic Block 		H01
