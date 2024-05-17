@@ -1,167 +1,111 @@
-CREATE DATABASE CEMS;
-USE CEMS;
-CREATE TABLE EVENT (
-    Event_ID INT NOT NULL AUTO_INCREMENT,
-    Name VARCHAR(225) NOT NULL,
-    Description TEXT,
-    Event_Creation_Date_Time DATETIME DEFAULT CURRENT_TIMESTAMP,
-    Event_Start_Date_Time DATETIME NOT NULL,
-    Event_End_Date_Time DATETIME NOT NULL,
-    Club_Name VARCHAR(225),
-    Venue_ID INT,
-    Dept_ID INT,
-    Auth_Email VARCHAR(225) NOT NULL,
-    PRIMARY KEY(Event_ID)
-);
-CREATE TABLE DEPARTMENT (
-	Dept_ID INT NOT NULL,
-	Dept_Head_Email VARCHAR(225) NOT NULL,
-	Dept_Name VARCHAR(225) NOT NULL,
-	PRIMARY KEY(Dept_ID)
-);
-INSERT INTO DEPARTMENT VALUES 
-(1,'academic.affairs@iiitdm.ac.in','SAC-Academic Affairs'),
-(2,'alumni.affairs@iiitdm.ac.in','SAC-Alumni Affairs'),
-(3,'cultural.affairs@iiitdm.ac.in','Cultural Affairs'),
-(4,'general.affairs@iiitdm.ac.in','SAC-General Affairs'),
-(5,'hostel.affairs@iiitdm.ac.in','SAC-Hostel Affairs'),
-(6,'placement@iiitdm.ac.in','Training and Placement Cell'),
-(7,'sports@iiitdm.ac.in','SAC-Sports Affairs'),
-(8,'technical.affairs@iiitdm.ac.in','Technical Affairs');
-CREATE TABLE CLUB (
-	Club_Name VARCHAR(225) NOT NULL,
-	Dept_ID INT NOT NULL,
-	Club_Head_Email VARCHAR(225) NOT NULL,
-	PRIMARY KEY(Club_Name)
-);
-INSERT INTO CLUB VALUES
-(801,'AUV','auv.society@iiitdm.ac.in',8),
-(802,'CS CLUB','csclub@iiitdm.ac.in',8),
-(803,'EPIC','epic@iiitdm.ac.in',8),
-(804,'GDSC','gdsc@iiitdm.ac.in',8),
-(805,'MARS','mars@iiitdm.ac.in',8),
-(806,'OPTICA','optica@iiitdm.ac.in',8),
-(807,'ROBOTICS','technical.affairs@iiitdm.ac.in',8),
-(808,'SAE','saeclub@iiitdm.ac.in',8),
-(809,'TAD','idc@iiitdm.ac.in',8),
-(810,'IPD','ipd@iiitdm.ac.in',8),
-(811,'ASME STUDENT SECTION','asme@iiitdm.ac.in',8),
-(812,'IEEE STUDENT BRANCH','ieeesb@iiitdm.ac.in',8),
-(813,'SYSTEM CODING CLUB','technical.affairs@iiitdm.ac.in',8),
-(301,'Aurora','cultural.affairs@iiitdm.ac.in',3),
-(302,'Cinematics','cultural.affairs@iiitdm.ac.in',3),
-(303,'Esports','cultural.affairs@iiitdm.ac.in',3),
-(304,'Footlights','cultural.affairs@iiitdm.ac.in',3),
-(305,'Imagix','cultural.affairs@iiitdm.ac.in',3),
-(306,'Literati Society','cultural.affairs@iiitdm.ac.in',3),
-(307,'Music','cultural.affairs@iiitdm.ac.in',3),
-(308,'Quriosity','cultural.affairs@iiitdm.ac.in',3),
-(309,'Tamizh Saalaram','cultural.affairs@iiitdm.ac.in',3),
-(310,'Theatrix','cultural.affairs@iiitdm.ac.in',3)
-(311,'Spicmacay','cultural.affairs@iiitdm.ac.in',3)
-(312,'IndicSense','cultural.affairs@iiitdm.ac.in',3);
+DATABASE : CEMS
+TABLE NAME: app1_club:
+id	name					dept_id		head_id
+301	Aurora					3			21
+302	Cinematics				3			21	
+303	Esports					3			21
+304	Footlights				3			21	
+305	Imagix					3			21
+306	Literati Society		3			21	
+307	Music					3			21
+308	Quriousity				3			21	
+309	Tamizh Saalaram			3			21
+310	Theatrix				3			21	
+311	Spicmacy				3			21
+312	IndiSense				3			21	
+801	AUV						8			28
+802	CS CLUB					8			29
+803	EPIC					8			30
+804	GDSC					8			31
+805	MARS					8			32
+806	OPTICA					8			33
+807	ROBOTICS				8			26
+808	SAE						8			34
+809	TAD						8			37
+810	IPD						8			35
+811	ASME STUDENT SECTION	8			36
+812	IEEE STUDENT BRANCH		8			38
+813	SYSTEM CODING CLUB		8			26
+814	Red Ribbon Society		3			21
 
-CREATE TABLE AUTHORISED_USER(
-	Email VARCHAR(225) NOT NULL,
-	Password VARCHAR(50) NOT NULL,
-	Club_Name VARCHAR(225),
-	Dept_ID INT,
-	PRIMARY KEY(Email)
-);
+TABLE NAME: app1_department
+id	name							head_id
+1	Academic affairs				19			
+2	Alumni Affairs					20
+3	ultural Affairs					21
+4	General Affairs					22
+5	Hostel Affairs					23		
+6	Training and Placement Cell		24
+7	Sports							25
+8	Technical Affairs				26
+9	Mess Affairs					27
 
-INSERT INTO AUTHORISED_USER VALUES
-('academic.affairs@iiitdm.ac.in','Academic@123',NULL,1),
-('alumni.affairs@iiitdm.ac.in','Alumni@123',NULL,2),
-('cultural.affairs@iiitdm.ac.in','Cultural@123',NULL,3),
-('general.affairs@iiitdm.ac.in','General@123',NULL,4),
-('hostel.affairs@iiitdm.ac.in','Hostel@123',NULL,5),
-('placement@iiitdm.ac.in','Placement@123',NULL,6),
-('sports@iiitdm.ac.in','Sports@123',NULL,7),
-('auv.society@iiitdm.ac.in','auvsociety@123','AUV',8),
-('asme@iiitdm.ac.in','ASMEss@123','ASME STUDENT SECTION',8),
-('epic@iiitdm.ac.in','Epicclub@123','EPIC',8),
-('gdsc@iiitdm.ac.in','gdsc_iiitdm@123','GDSC',8),
-('ieeesb@iiitdm.ac.in','IEEEE_sb@123','IEEE STUDENT BRANCH',8),
-('ipd@iiitdm.ac.in','ipd_iiitdm@123','IPD',8),
-('mars@iiitdm.ac.in','Mars_iiitdm@123','MARS',8),
-('optica@iiitdm.ac.in','Optica_iiitdm@123','OPTICA',8),
-('saeclub@iiitdm.ac.in','saeclub@123','SAE',8),
-('idc@iiitdm.ac.in','tad_idc@123','TAD',8),
-('csclub@iiitdm.ac.in','Csclub@123','CS CLUB',8),
-('technical.affairs@iiitdm.ac.in','Technical@123',NULL,8);
+TABLE NAME: app1_venue
+Got it, here's the list with the format "1 Academic Block H05" for each item:
 
-CREATE TABLE USER(
-	Email VARCHAR(225) NOT NULL,
-	Password VARCHAR(50) NOT NULL,
-	PRIMARY KEY(Email)
-);
-INSERT INTO USER VALUES
-('cs20b1020@iiitdm.ac.in','Cs22b1020_iiitdm'),
-('cs20b1080@iiitdm.ac.in','Cs22b1080_iiitdm'),
-('cs20b1082@iiitdm.ac.in','Cs22b1082_iiitdm'),
-('cs20b2034@iiitdm.ac.in','Cs22b2034_iiitdm'),
-('cs20b2039@iiitdm.ac.in','Cs22b2039_iiitdm');
+id	building_name			location
+1 	Academic Block 			H05
+2 	Academic Block 			H01
+3 	Academic Block 			H02
+4 	Academic Block 			H03
+5 	Academic Block 			H04
+6 	Academic Block 			H11
+7 	Academic Block 			H12
+8 	Academic Block 			H13
+9 	Academic Block 			H14
+10 	Academic Block 			H15
+11 	Academic Block 			H21
+12 	Academic Block 			H22
+13 	Academic Block 			H23
+14 	Academic Block 			H24
+15 	Academic Block 			H25
+16 	Academic Block 			H31
+17 	Academic Block 			H32
+18 	Academic Block 			H33
+19 	Academic Block 			H34
+20 	Academic Block 			H35
+21 	Academic Block 			H41
+22 	Academic Block 			H42
+23 	Academic Block 			H43
+24 	Academic Block 			H44
+25 	Academic Block 			H45
+26 	Arjuna Sports Complex 	Basketball Court
+27 	Arjuna Sports Complex 	Football Court
+28 	Arjuna Sports Complex 	Cricket Ground
+29 	Arjuna Sports Complex 	Volleyball Court
+30 	Arjuna Sports Complex 	Badminton Court
+31 	Arjuna Sports Complex 	Tennis Court
+32 	Arjuna Sports Complex 	Gym
+33 	Admin                 	Placement Office
+34 	Admin 		      		Seminar Hall
+35 	Academic Block        	Old Library
+36	Akshaya		   			Mess
 
-CREATE TABLE VENUE(
-	Venue_ID INT,
-	Building_Name VARCHAR(225),
-	Location VARCHAR(225),
-	PRIMARY KEY(Venue_ID) 
-);
-
-INSERT INTO VENUE VALUES
-(1,'Academic Block','H05'),
-(2,'Academic Block','H01'),
-(3,'Academic Block','H02'),
-(4,'Academic Block','H03'),
-(5,'Academic Block','H04'),
-(6,'Academic Block','H11'),
-(7,'Academic Block','H12'),
-(8,'Academic Block','H13'),
-(9,'Academic Block','H14'),
-(10,'Academic Block','H15'),
-(11,'Academic Block','H21'),
-(12,'Academic Block','H22'),
-(13,'Academic Block','H23'),
-(14,'Academic Block','H24'),
-(15,'Academic Block','H25'),
-(16,'Academic Block','H31'),
-(17,'Academic Block','H32'),
-(18,'Academic Block','H33'),
-(19,'Academic Block','H34'),
-(20,'Academic Block','H35'),
-(21,'Academic Block','H41'),
-(22,'Academic Block','H42'),
-(23,'Academic Block','H43'),
-(24,'Academic Block','H44'),
-(25,'Academic Block','H45'),
-(26,'Arjuna Sports Complex','Basketball Court'),
-(27,'Arjuna Sports Complex','Football Court'),
-(28,'Arjuna Sports Complex','Cricket Ground'),
-(29,'Arjuna Sports Complex','Volleyball Court'),
-(30,'Arjuna Sports Complex','Badminton Court'),
-(31,'Arjuna Sports Complex','Tennis Court'),
-(32,'Arjuna Sports Complex','Gym'),
-(33,'Admin','Placement Office'),
-(34,'Admin','Seminar Hall');
-
-CREATE TABLE FAVORITES(
-	Event_ID INT,
-	User_Email VARCHAR(225)
-);
-
-ALTER TABLE EVENT ADD CONSTRAINT clubname FOREIGN KEY(Club_Name) REFERENCES CLUB(Club_Name);
-
-ALTER TABLE EVENT ADD CONSTRAINT venueid FOREIGN KEY(Venue_ID) REFERENCES VENUE(Venue_ID);
-
-ALTER TABLE EVENT ADD CONSTRAINT deptid FOREIGN KEY(Dept_ID) REFERENCES DEPARTMENT(Dept_ID);
-
-ALTER TABLE EVENT ADD CONSTRAINT Authemail FOREIGN KEY(Auth_Email) REFERENCES AUTHORISED_USER(Email);
-
-ALTER TABLE AUTHORISED_USER ADD CONSTRAINT departmentid FOREIGN KEY(Dept_ID) REFERENCES DEPARTMENT(Dept_ID);
-
-ALTER TABLE CLUB ADD CONSTRAINT id_dept FOREIGN KEY(Dept_ID) REFERENCES DEPARTMENT(DEPT_ID);
-
-ALTER TABLE FAVORITES ADD CONSTRAINT eventid FOREIGN KEY(Event_ID) REFERENCES EVENT(Event_ID);
-
-ALTER TABLE FAVORITES ADD CONSTRAINT email FOREIGN KEY(User_Email) REFERENCES USER(Email);
+TABLE NAME: auth_user
+id	username						is_superuser
+5	admin				1
+14	cs22b1020@iiitdm.ac.in			0
+15	cs22b1080@iiitdm.ac.in			0
+16	cs22b1082@iiitdm.ac.in			0
+17	cs22b2034@iiitdm.ac.in			0
+18	cs22b2039@iiitdm.ac.in			0
+19	academic.affairs@iiitdm.ac.in	0
+20	alumni.affairs@iiitdm.ac.in		0
+21	cultural.affairs@iiitdm.ac.in	0
+22	general.affairs@iiitdm.ac.in	0
+23	hostel.affairs@iiitdm.ac.in		0
+24	placement@iiitdm.ac.in			0
+25	sports@iiitdm.ac.in				0
+26	technical.affairs@iiitdm.ac.in	0
+27	mess.affairs@iiitdm.ac.in		0
+28	auv.society@iiitdm.ac.in		0
+29	csclub@iiitdm.ac.in				0
+30	epic@iiitdm.ac.in				0
+31	gdsc@iiitdm.ac.in				0
+32	mars@iiitdm.ac.in				0
+33	optica@iiitdm.ac.in				0
+34	saeclub@iiitdm.ac.in			0
+35	ipd@iiitdm.ac.in				0
+36	asme@iiitdm.ac.in				0
+37	idc@iiitdm.ac.in				0
+38	ieeesb@iiitdm.ac.in				0
