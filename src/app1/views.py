@@ -53,7 +53,7 @@ def fav_event(request, eventid):
     if request.user.is_authenticated:
         event = Event.objects.filter(id=eventid).first()
         fav, created = Favorites.objects.get_or_create(user=request.user, event=event)
-        logging.warn(f'Fav done for {fav.event} by {fav.user}')
+        # logging.warn(f'Fav done for {fav.event} by {fav.user}')
         return JsonResponse({"status":"success"})
     else:
         return JsonResponse({"status":"error"})
